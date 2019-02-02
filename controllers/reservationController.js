@@ -1,46 +1,41 @@
 const db = require("../models");
+const seatController = require('./seatController');
 
 module.exports = {
-    create: function(req, res) {
-        db.Reservation
-            .create({ reservationHolder: req.body.lastName })
-            .exec()
-            .then(data => {
-                if (res) {
-                    res.json(data);
-                }
-            })
-            .catch(err => {
-                if (res) {
-                    res.json(err);
-                } else {
-                    console.log(err);
-                }
-            })
+    addSeat: function(resId, seatId) {
+        return db.Reservation.findByIdAndUpdate(resId, { $addToSet: { seats: seatId } });
     },
 
-    deleteById: function(req, res) {
-        db.Reservation
-            .findByIdAndDelete(req.body.id)
-            .then(data => {
-                if (res) {
-                    res.json(data);
-                }
-            })
-            .catch(err => {
-                if (res) {
-                    res.json(err);
-                } else {
-                    console.log(err);
-                }
-            })
+    create: function(reservationHolder, seats) {
+        return db.Reservation
+                    .create({ reservationHolder, seats })
+                    .then(reservation => {
+                        seatController
+                            .changeStatus(seats, 'reserved')
+                        return reservation;
+                    });
     },
 
-    edit: function(req, res) {
-
+    delete: function(id) {
+        return db.Reservation
+                    .findByIdAndDelete(id)
+                    .then(reservation => {
+                        seatController.changeStatus(reservation.seats, 'open');
+                        return reservation;
+                    });
     },
 
-    find: function(req, res) {
+    findById: function(id) {
+        return db.Reservation
+                    .findById(id)
+                    .populate('seats');
+    },
 
+    payFor: function(id) {
+        return db.Reservation.findByIdAndUpdate(id, { paid: true });
+    },
+
+    removeSeat: function(resId, seatId) {
+        return db.Reservation.findByIdAndUpdate(resId, { $pull: { seats: seatId } });
     }
-}
+};
