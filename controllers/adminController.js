@@ -1,6 +1,7 @@
 const showController = require('./controllers/showController');
 const reservationController = require('./controllers/reservationController');
 const seatController = require('./controllers/seatController');
+const campController = require('./campController');
 
 module.exports = {
     addSeatToReservation: function(req, res) {
@@ -36,6 +37,13 @@ module.exports = {
             .catch(err => res.json(err));
     },
 
+    createCamp: function(req, res) {
+        campController
+            .create(req.body)
+            .then(camp => res.json(camp))
+            .catch(err => res.json(err));
+    },
+
     createReservation: function(req, res) {
         reservationController
             .create(req.body.name)
@@ -54,7 +62,7 @@ module.exports = {
 
     createShow: function(req, res) {
         showController
-            .create(req.body.title, req.body.date)
+            .create(req.body.title, req.body.date, req.body.price)
             .then(show => {
                 return showController.addSeats(show.title, show.date);
             })
@@ -68,6 +76,13 @@ module.exports = {
             .catch(err => res.json(err));
     },
 
+    deleteCamp: function(req, res) {
+        campController
+            .delete(req.body.title)
+            .then(camp => res.json(camp))
+            .catch(err => res.json(err));
+    },
+
     deleteShow: function(req, res) {
         showController
             .delete(req.body.title, req.body.date)
@@ -75,10 +90,31 @@ module.exports = {
             .catch(err => res.json(err));
     },
 
+    editCamp: function(req, res) {
+        campController
+            .edit(req.body.title, req.body.key, req.body.value)
+            .then(camp => res.json(camp))
+            .catch(err => res.json(err));
+    },
+
     editShow: function(req, res) {
         showController
             .changeProperty(req.body.title, req.body.date, req.body.key, req.body.value)
             .then(show => res.json(show))
+            .catch(err => res.json(err));
+    },
+
+    findCamps: function(req, res) {
+        campController
+            .findAll()
+            .then(camps => res.json(camps))
+            .catch(err => res.json(err));
+    },
+
+    findOneCamp: function(req, res) {
+        campController
+            .find(req.body.title)
+            .then(camp => res.json(camp))
             .catch(err => res.json(err));
     },
 
@@ -98,6 +134,15 @@ module.exports = {
             .then(reservations => res.json(reservations))
             .catch(err => res.json(err));
             
+    },
+
+    findShows: function(req, res) {
+        showController
+            .findAll()
+            .populate('reservations')
+            .populate('seats')
+            .then(shows => res.json(shows))
+            .catch(err => res.json(err));
     },
 
     payForReservation: function(req, res) {
@@ -128,15 +173,6 @@ module.exports = {
                         })
             })
             .then(seat => res.json(seat))
-            .catch(err => res.json(err));
-    },
-
-    viewShows: function(req, res) {
-        showController
-            .findAll()
-            .populate('reservations')
-            .populate('seats')
-            .then(shows => res.json(show))
             .catch(err => res.json(err));
     }
 };

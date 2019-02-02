@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const showSchema = new Schema({
     title: { type: String, required: true },
     date: { type: Date, required: true },
+    ticketPrice: { type: Number, required: true },
     seats: [{ type: Schema.Types.ObjectId, ref: 'Seat' }],
     reservations: [{ type: Schema.Types.ObjectId, ref: 'Reservation' }]
 });

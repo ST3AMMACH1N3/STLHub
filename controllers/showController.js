@@ -19,8 +19,8 @@ module.exports = {
         return db.Show.findOneAndUpdate({ title, date }, { [key]: newValue });
     },
 
-    create: function(title, date) {
-        return db.Show.create({ title, date });
+    create: function(title, date, ticketPrice) {
+        return db.Show.create({ title, date, ticketPrice });
     },
 
     delete: function(title, date) {
