@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.css';
 
-function Footer() {
+function Seat() {
     return null
 };
 
-export default Footer;
+export default Seat;
