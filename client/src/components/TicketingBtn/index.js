@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.css';
 
-function Footer() {
+function TicketingBtn() {
     return null
 };
 
-export default Footer;
+export default TicketingBtn;
