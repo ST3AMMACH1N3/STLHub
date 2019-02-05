@@ -1,6 +1,6 @@
-const showController = require('./controllers/showController');
-const reservationController = require('./controllers/reservationController');
-const seatController = require('./controllers/seatController');
+const showController = require('./showController');
+const reservationController = require('./reservationController');
+const seatController = require('./seatController');
 
 module.exports = {
     addSeatToReservation: function(req, res) {

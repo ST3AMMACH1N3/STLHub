@@ -1,7 +1,7 @@
-const showController = require('./controllers/showController');
-const reservationController = require('./controllers/reservationController');
-const seatController = require('./controllers/seatController');
-const campController = require('./campController');
+const showController = require('./showController');
+const reservationController = require('./reservationController');
+const seatController = require('./seatController');
+const contentController = require('./contentController');
 
 module.exports = {
     addSeatToReservation: function(req, res) {
@@ -37,10 +37,10 @@ module.exports = {
             .catch(err => res.json(err));
     },
 
-    createCamp: function(req, res) {
-        campController
-            .create(req.body)
-            .then(camp => res.json(camp))
+    createContent: function(req, res) {
+        contentController
+            .create(req.body.type, req.body)
+            .then(content => res.json(content))
             .catch(err => res.json(err));
     },
 
@@ -76,10 +76,10 @@ module.exports = {
             .catch(err => res.json(err));
     },
 
-    deleteCamp: function(req, res) {
-        campController
-            .delete(req.body.title)
-            .then(camp => res.json(camp))
+    deleteContent: function(req, res) {
+        contentController
+            .delete(req.body.type, req.body.title)
+            .then(content => res.json(content))
             .catch(err => res.json(err));
     },
 
@@ -90,10 +90,10 @@ module.exports = {
             .catch(err => res.json(err));
     },
 
-    editCamp: function(req, res) {
-        campController
-            .edit(req.body.title, req.body.key, req.body.value)
-            .then(camp => res.json(camp))
+    editContent: function(req, res) {
+        contentController
+            .edit(req.body.type, req.body.title, req.body.key, req.body.value)
+            .then(content => res.json(content))
             .catch(err => res.json(err));
     },
 
@@ -104,17 +104,17 @@ module.exports = {
             .catch(err => res.json(err));
     },
 
-    findCamps: function(req, res) {
-        campController
-            .findAll()
-            .then(camps => res.json(camps))
+    findContent: function(req, res) {
+        contentController
+            .findAll(req.body.type)
+            .then(content => res.json(content))
             .catch(err => res.json(err));
     },
 
-    findOneCamp: function(req, res) {
-        campController
-            .find(req.body.title)
-            .then(camp => res.json(camp))
+    findSpecificContent: function(req, res) {
+        contentController
+            .find(req.body.type, req.body.title)
+            .then(content => res.json(content))
             .catch(err => res.json(err));
     },
 
