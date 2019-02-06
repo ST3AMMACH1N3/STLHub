@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Thanks from './components/Thanks';
 import Main from './pages/Main';
 import Ticketing from './pages/Ticketing';
 // import Checkout from './pages/Checkout';
@@ -22,7 +21,7 @@ function App() {
           {/* <Route exact path='/thankyou' component={Thankyou} /> */}
           {/* <Route component={NoMatch}/> */}
         </Switch>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Router>
   );

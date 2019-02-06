@@ -6,7 +6,7 @@ function MainShows(props) {
     let {title, date1, date2, date3} = props.currentShow;
 
     return (
-        <div className='mainShow'>
+        <div className='mainShow' id='mainShow'>
             <h4 className='currentShow'>Current Show:</h4>
             <h1 className='showTitle'>{title}</h1>
             <h4 className='showDate'>{date1}</h4>
