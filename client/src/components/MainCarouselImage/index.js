@@ -5,7 +5,7 @@ function MainCarouselImage(props){
     let src = props.src;
     return(
         <div>
-            <img className='carouselImg' src={src} />
+            <img className='carouselImg' src={src} alt='STL Carousel'/>
         </div>
     );
 };

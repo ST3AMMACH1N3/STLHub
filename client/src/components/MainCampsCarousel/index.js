@@ -17,7 +17,7 @@ function MainCampsCarousel(props) {
     };
 
     return (
-        <div className='mainSummerCamps'>
+        <div className='mainSummerCamps' id='mainCamps'>
             <h1>Summer Camps</h1>
             <div className='container'>
                 <Slider {...settings}>
@@ -33,7 +33,7 @@ function MainCampsCarousel(props) {
 
 export default MainCampsCarousel;
 
-{/* <div>
+/* <div>
 <h2>'Trollapalooza!'</h2>
 <span>A camp for ages 4-16</span>
 <br></br>
@@ -70,4 +70,4 @@ export default MainCampsCarousel;
 <span><strong>Tuition for this camp: $200</strong></span>
 <br></br>
 <span>Performance August 3 at 7PM Tickets $5 at the door.</span>
-</div> */}
+</div> */
