@@ -1,3 +1,6 @@
 module.exports = {
-  Book: require("./book")
+  Show: require('./show'),
+  Reservation: require('./reservation'),
+  Seat: require('./seat'),
+  Camp: require('./camp')
 };
