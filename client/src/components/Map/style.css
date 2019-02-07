@@ -2,3 +2,13 @@
     text-align: center;
     border: 2px solid black;
 }
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+#facebookLogo {
+    height: 50px;
+    width: 50px;
+}

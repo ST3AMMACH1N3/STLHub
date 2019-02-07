@@ -3,7 +3,6 @@ import MainImageCarousel from '../components/MainImageCarousel';
 import MainShows from '../components/MainShows';
 import MainSurvivor from '../components/MainSurvivor';
 import MainCampsCarousel from '../components/MainCampsCarousel';
-import Thanks from '../components/Thanks';
 import Lessons from '../components/Lessons';
 import Map from '../components/Map';
 

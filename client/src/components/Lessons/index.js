@@ -35,7 +35,7 @@ class Lessons extends Component {
 
     showLessons = () => {
         return (
-            <div className='mainLessons'>
+            <div className='mainLessons' id='mainLessons'>
                 <h1>Private Lessons</h1>
                 <p>Skye's the Limit Studio offers private instruction and coaching in voice, acting, and dance at a rate of $20 per half hour.  Lessons may be ongoing or one-time.</p>
                 <p>Please contact us for availability and scheduling.</p>
