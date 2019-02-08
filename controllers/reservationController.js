@@ -25,6 +25,12 @@ module.exports = {
                     });
     },
 
+    findAll: function() {
+        return db.Reservation
+                    .find()
+                    .populate('seats');
+    },
+
     findById: function(id) {
         return db.Reservation
                     .findById(id)

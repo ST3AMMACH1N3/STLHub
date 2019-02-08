@@ -1,16 +1,45 @@
 const router = require('express').Router();
 const adminController = require('../../controllers/adminController');
 
-// Matches with '/api/admin'
-// router.route('/')
-//   .get(booksController.findAll)
-//   .post(booksController.create);
+router
+    .route('/Show')
+    .get(adminController.findShows)
+    .post(adminController.createShow)
+    .put(adminController.editShow)
+    .delete(adminController.deleteShow);
 
-// Matches with '/api/admin/:id'
-// router
-//   .route('/:id')
-//   .get(booksController.findById)
-//   .put(booksController.update)
-//   .delete(booksController.remove);
+router
+    .route('/Show/:id')
+    .get(adminController.findShowById);
+
+router
+    .route('/Content')
+    .get(adminController.findContent)
+    .post(adminController.createContent)
+    .put(adminController.editContent)
+    .delete(adminController.deleteContent);
+
+router
+    .route('/Content/:id')
+    .get(adminController.findContentById);
+
+router
+    .route('/Reservation')
+    .get(adminController.findReservations)
+    .post(adminController.createReservation)
+    .put(adminController.payForReservation)
+    .delete(adminController.deleteContent);
+
+router
+    .route('/Reservation/addSeat')
+    .put(adminController.addSeatToReservation);
+
+router
+    .route('/Reservation/removeSeat')
+    .put(adminController.removeSeatFromReservation);
+
+router
+    .route('/Reservation/:id')
+    .get(adminController.findReservationById);
 
 module.exports = router;

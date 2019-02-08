@@ -19,5 +19,9 @@ module.exports = {
 
     findAll: function(contentType) {
         return db[contentType].find();
+    },
+
+    findById: function(contentType, id) {
+        return db[contentType].findById(id);
     }
 };

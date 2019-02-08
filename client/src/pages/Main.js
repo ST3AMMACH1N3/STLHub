@@ -5,6 +5,7 @@ import MainSurvivor from '../components/MainSurvivor';
 import MainCampsCarousel from '../components/MainCampsCarousel';
 import Lessons from '../components/Lessons';
 import Map from '../components/Map';
+import API from '../utils/API';
 
 class Main extends Component {
     state = {
@@ -49,6 +50,10 @@ class Main extends Component {
             dates: 'Jan 18, 19, 20'
         }
     };
+
+    componentDidMount = () => {
+        API.getContent().then(content => console.log(content));
+    }
 
     render() {
         return (

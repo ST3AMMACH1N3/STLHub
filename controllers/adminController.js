@@ -111,6 +111,13 @@ module.exports = {
             .catch(err => res.json(err));
     },
 
+    findContentById: function(req, res) {
+        contentController
+            .findById(req.params.id)
+            .then(content => res.json(content))
+            .catch(err => res.json(err));
+    },
+
     findSpecificContent: function(req, res) {
         contentController
             .find(req.body.type, req.body.title)
@@ -118,7 +125,7 @@ module.exports = {
             .catch(err => res.json(err));
     },
 
-    findOneReservation: function(req, res) {
+    findSpecificReservation: function(req, res) {
         showController
             .findReservation(req.body.title, req.body.date, req.body.name)
             .then(reservation => res.json(reservation))
@@ -136,12 +143,28 @@ module.exports = {
             
     },
 
+    findReservationById: function(req, res) {
+        reservationController
+            .findById(req.params.id)
+            .then(reservation => res.json(reservation))
+            .catch(err => res.json(err));
+    },
+
     findShows: function(req, res) {
         showController
             .findAll()
             .populate('reservations')
             .populate('seats')
             .then(shows => res.json(shows))
+            .catch(err => res.json(err));
+    },
+
+    findShowById: function(req, res) {
+        showController
+            .findById(req.params.id)
+            .populate('reservations')
+            .populate('seats')
+            .then(show => res.json(show))
             .catch(err => res.json(err));
     },
 
