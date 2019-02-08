@@ -43,6 +43,10 @@ module.exports = {
         return db.Show.find();
     },
 
+    findById: function(id) {
+        return db.Show.findById(id);
+    },
+
     findReservations: function(title, date) {
         return db.Show
                     .find({ title, date })
