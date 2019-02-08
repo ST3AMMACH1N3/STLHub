@@ -5,7 +5,7 @@ const campSchema = new Schema({
     title: { type: String, required: true },
     dates: { type: String, required: true },
     description: { type: String, required: true },
-    tuition: { type: Number },
+    tuition: { type: Number, require: true },
     showDate: { type: Date },
     ticketPrice: { type: Number },
     extendedDay: { type: Boolean, default: false },
