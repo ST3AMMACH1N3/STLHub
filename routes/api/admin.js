@@ -1,5 +1,10 @@
 const router = require('express').Router();
 const adminController = require('../../controllers/adminController');
+const isAuthenticated = require('../../config/middleware/isAuthenticated');
+const isAdmin = require('../../config/middleware/isAdmin');
+
+router.use(isAuthenticated);
+router.use(isAdmin);
 
 router
     .route('/Show')
