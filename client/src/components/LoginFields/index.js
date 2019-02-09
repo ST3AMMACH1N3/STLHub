@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
+import API from '../../utils/API';
 
 class LoginFields extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            Email: '',
-            Password: ''
+            email: '',
+            password: ''
         };
     };
 
@@ -20,11 +21,14 @@ class LoginFields extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-
-        this.setState({
-            Email: '',
-            Password: ''
-        });
+        API
+            .login({ email: this.state.email, password: this.state.password })
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
+            this.setState({
+                email: '',
+                password: ''
+            });
     };
 
     render() {

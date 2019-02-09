@@ -27,12 +27,15 @@ router
 
 router
     .route('/login')
-    .post(passport.authenticate('local'), (req, res) => {
-      db.User
-          .findOne({ email: req.body.email })
-          .then(data => {
-              res.json(data);
-          })
+    .post((req, res) => {
+        db.User
+            .findOne({ email: req.body.email })
+            .then(data => {
+                res.json(data);
+            })
+            .catch(err => {
+                res.json(err);
+            })
     })
 
 module.exports = router;
