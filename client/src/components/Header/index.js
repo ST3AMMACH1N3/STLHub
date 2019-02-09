@@ -41,7 +41,10 @@ function Header() {
                 </ul>:
                 <ul className='navbar-nav mr-auto'>
                     <li className='nav-item active' data-toggle="collapse" data-target=".navbar-collapse">
-                    <a className='nav-link' href='#Header' >Home <span className='sr-only'>(current)</span></a>
+                        <a className='nav-link' href='#Header' >Home <span className='sr-only'>(current)</span></a>
+                    </li>
+                    <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
+                        <Link className='nav-link' to='/login'>Log In</Link>
                     </li>
                     <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
                         <a className='nav-link' href='#mainShow' >Current Show</a>

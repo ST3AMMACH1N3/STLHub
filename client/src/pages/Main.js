@@ -6,6 +6,7 @@ import MainCampsCarousel from '../components/MainCampsCarousel';
 import Lessons from '../components/Lessons';
 import Map from '../components/Map';
 import API from '../utils/API';
+import Announcements from '../components/Announcements';
 
 class Main extends Component {
     state = {
@@ -18,47 +19,51 @@ class Main extends Component {
         {
             src: 'https://static.wixstatic.com/media/3c9dac_19d5a038c4db4b8986c253f99960d69c~mv2.jpg/v1/fill/w_764,h_483,al_c,q_85/3c9dac_19d5a038c4db4b8986c253f99960d69c~mv2.webp'
         }],
-        camps: [{
-            title: 'Trollapalooza!',
-            ages: 'A camp for ages 4-16',
-            dates: 'June 11-15 9:00AM-12:00PM',
-            tuition: 'Tuition for this camp: $90',
-            performance: []
-        },
-        {
-            title: 'Coco',
-            ages: 'A musical play for ages 4-16',
-            dates: 'June 18-29 9:00AM-12:00PM',
-            tuition: 'Tuition for this camp: $180',
-            performance: 'Performance June 29 at 7PM Tickets $3 at the door.'
-        },
-        {
-            title: 'Pitched Perfect',
-            ages: 'A vocal performance camp for ages 8-16',
-            dates: 'July 2-13 9:00AM-12:00PM',
-            tuition: 'Tuition for this camp: $180',
-            performance: []
-        }],
+        camps: [],
         currentShow: {
-            title: 'Xanadu',
-            date1: 'Fri Aug 3 - 7:00',
-            date2: 'Fri Aug 3 - 7:00',
-            date3: 'Fri Aug 3 - 7:00'
+            title: '',
+            date: ''
         },
         survivor: {
-            theme: 'Asgard',
-            dates: 'Jan 18, 19, 20'
-        }
+            theme: '',
+            dates: '',
+            tuition: ''
+        },
+        announcements: []
     };
 
     componentDidMount = () => {
-        API.getContent().then(content => console.log(content));
+        API.getContent().then(content => {
+            console.log(content);
+            let dateObj = new Date(content.data.shows[0].date)
+            let dateArray = dateObj.toString().split(' ')
+            let hours = dateObj.getHours() > 12 ? dateObj.getHours() - 12 : dateObj.getHours()
+            let minutes = dateObj.getMinutes() < 10 ? '0' + dateObj.getMinutes() : dateObj.getMinutes();
+            let camps = content.data.camps.map(camp => {
+                camp.tuition = (parseInt(camp.tuition) / 100).toFixed(2)
+                return camp
+            })
+            this.setState({
+                currentShow: {
+                    title: content.data.shows[0].title,
+                    date: `${dateArray[0]} ${dateArray[1]} ${dateArray[2]} @ ${hours}:${minutes}`
+                },
+                survivor: {
+                    theme: content.data.survivors[0].title,
+                    dates: content.data.survivors[0].dates,
+                    tuition: '$' + (content.data.survivors[0].tuition / 100).toFixed(2)
+                },
+                camps: camps,
+                announcements: content.data.announcements
+            })
+        });
     }
 
     render() {
         return (
             <div>
                 <MainImageCarousel images={this.state.images}/>
+                {(this.state.announcements) ? <Announcements announcements={this.state.announcements}/> : ''}
                 <MainShows currentShow={this.state.currentShow}/>
                 <MainSurvivor survivor={this.state.survivor}/>
                 <MainCampsCarousel camps={this.state.camps}/>
