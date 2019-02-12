@@ -2,10 +2,16 @@ import React, {Component} from 'react'
 import './style.css'
 
 class AdminSurvivorForm extends Component {
-    
-    state = {
-        theme: '',
-        dates: ''
+    constructor(props){
+        super(props)
+
+        this.state = {
+            title: props.survivors.title,
+            dates: props.survivors.dates,
+            description: props.survivors.description,
+            tuition: props.survivors.tuition,
+            image: props.survivors.image
+        }
     }
 
     handleInputChange = event => {
@@ -19,11 +25,12 @@ class AdminSurvivorForm extends Component {
         event.preventDefault();
 
         this.setState({
-            theme: '',
-            dates: ''
+            title: '',
+            dates: '',
+            description: '',
+            tuition: '',
+            image: ''
         });
-
-        console.log(this.state.theme + ', ' + this.state.dates)
 
 
     };
@@ -31,11 +38,10 @@ class AdminSurvivorForm extends Component {
     render() {
         return (
             <div>
-                <h4>New Survivor:</h4>
                 <form>
                     <input 
-                    value={this.state.theme}
-                    name='theme'
+                    value={this.state.title}
+                    name='title'
                     onChange={this.handleInputChange}
                     type='text'
                     placeholder='Enter Theme'
@@ -49,7 +55,32 @@ class AdminSurvivorForm extends Component {
                     placeholder='Enter Dates'
                     />
                     <br />
-                    <button onClick={this.handleFormSubmit}>Add</button>
+                    <input 
+                    value={this.state.description}
+                    name='description'
+                    onChange={this.handleInputChange}
+                    type='text'
+                    placeholder='Enter Description'
+                    />
+                    <br />
+                    <input 
+                    value={this.state.tuition}
+                    name='tuition'
+                    onChange={this.handleInputChange}
+                    type='text'
+                    placeholder='Enter Tuition Price'
+                    />
+                    <br />
+                    <input 
+                    value={this.state.image}
+                    name='image'
+                    onChange={this.handleInputChange}
+                    type='text'
+                    placeholder='Enter Image'
+                    />
+                    <br />
+                    <button>Save</button>
+                    <button>Delete</button>
                 </form>
             </div>
         ) 

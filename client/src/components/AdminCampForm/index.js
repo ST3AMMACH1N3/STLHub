@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
 import './style.css';
 
-class AdminShowForm extends Component {
-    state = {
-        name: '',
-        description: '',
-        date: '',
-        time: '',
-        tuition: '',
-        performance: false,
-        performanceDate: '',
-        performancePrice: '',
-        extendedStay: false,
+class AdminCampForm extends Component {
+    constructor(props){
+        super(props)
+
+        this.state = {
+            title: props.camps.title,
+            dates: props.camps.dates,
+            description: props.camps.description,
+            tuition: props.camps.tuition,
+            showDate: props.camps.showDate,
+            ticketPrice: props.camps.ticketPrice,
+            extendedDay: props.camps.extendedDay,
+            extendedDayPrice: props.camps.extendedDayPrice
+        };
     };
 
     handleInputChange = event => {
@@ -25,18 +28,17 @@ class AdminShowForm extends Component {
         event.preventDefault();
 
         this.setState({
-            name: '',
-            description: '',
-            date: '',
-            time: '',
-            tuition: '',
-            performance: false,
-            performanceDate: '',
-            performancePrice: '',
-            extendedStay: false,
+            title: [],
+            dates: [],
+            description: [],
+            tuition: [],
+            showDate: [],
+            ticketPrice: [],
+            extendedDay: false,
+            extendedDayPrice: []
         });
 
-        console.log(this.state.name + ', ' + this.state.description + ', ' + this.state.date + ', ' + this.state.time + ', ' + this.state.tuition + ', ' + this.state.performance + ', ' + this.state.performanceDate + ', ' + this.state.performancePrice + ', ' + this.state.extendedStay)
+        console.log(this.state.title + ', ' + this.state.description + ', ' + this.state.dates + ', ' + this.state.tuition + ', ' + this.state.showDate + ', ' + this.state.ticketPrice + ', ' + this.state.extendedDay + ', ' + this.state.extendedDayPrice)
 
 
     };
@@ -44,14 +46,21 @@ class AdminShowForm extends Component {
     render() {
         return(
             <div>
-                <h4>Add a Camp:</h4>
                 <form>
                     <input 
-                    value={this.state.name}
-                    name='name'
+                    value={this.state.title}
+                    name='title'
                     onChange={this.handleInputChange}
                     type='text'
                     placeholder='Enter Camp Name'
+                    />
+                    <br />
+                    <input 
+                    value={this.state.dates}
+                    name='dates'
+                    onChange={this.handleInputChange}
+                    type='text'
+                    placeholder='Enter Camp Dates'
                     />
                     <br />
                     <input 
@@ -63,22 +72,6 @@ class AdminShowForm extends Component {
                     />
                     <br />
                     <input 
-                    value={this.state.date}
-                    name='date'
-                    onChange={this.handleInputChange}
-                    type='text'
-                    placeholder='Enter Camp Dates'
-                    />
-                    <br />
-                    <input 
-                    value={this.state.time}
-                    name='time'
-                    onChange={this.handleInputChange}
-                    type='text'
-                    placeholder='Enter Camp Times'
-                    />
-                    <br />
-                    <input 
                     value={this.state.tuition}
                     name='tuition'
                     onChange={this.handleInputChange}
@@ -87,18 +80,42 @@ class AdminShowForm extends Component {
                     />
                     <br />
                     <input 
-                    value={this.state.performance}
-                    name='performance'
+                    value={this.state.showDate}
+                    name='showDate'
                     onChange={this.handleInputChange}
-                    type='radio'
-                    placeholder='Enter Camp Name'
+                    type='text'
+                    placeholder='Enter Camp Show Date'
                     />
                     <br />
-                    <button onClick={this.handleFormSubmit}>Add</button>
+                    <input 
+                    value={this.state.ticketPrice}
+                    name='ticketPrice'
+                    onChange={this.handleInputChange}
+                    type='text'
+                    placeholder='Enter Camp Show Ticket Price'
+                    />
+                    <br />
+                    <input 
+                    value={this.state.extendedDay}
+                    name='extendedDay'
+                    onChange={this.handleInputChange}
+                    type='checkbox' />
+                    <label>Extended Day</label>
+                    <br />
+                    <input 
+                    value={this.state.extendedDayPrice}
+                    name='extendedDayPrice'
+                    onChange={this.handleInputChange}
+                    type='text'
+                    placeholder='Enter Camp Extended Day Price'
+                    />
+                    <br />
+                    <button>Save</button>
+                    <button>Delete</button>
                 </form>
             </div>
         );
     };
 };
 
-export default AdminShowForm;
+export default AdminCampForm;

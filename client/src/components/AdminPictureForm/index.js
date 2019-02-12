@@ -38,7 +38,8 @@ class AdminPictureForm extends Component {
                     type='text'
                     />
                     <br />
-                    <button onClick={this.handleFormSubmit}>Add</button>
+                    <button>Save</button>
+                    <button>Delete</button>
                 </form>
             </div>
         ) 
