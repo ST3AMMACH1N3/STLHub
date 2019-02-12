@@ -28,13 +28,15 @@ module.exports = {
     findAll: function() {
         return db.Reservation
                     .find()
-                    .populate('seats');
+                    .populate('seats')
+                    .populate('users');
     },
 
     findById: function(id) {
         return db.Reservation
                     .findById(id)
-                    .populate('seats');
+                    .populate('seats')
+                    .populate('users');
     },
 
     payFor: function(id) {
