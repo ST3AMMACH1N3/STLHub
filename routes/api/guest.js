@@ -27,15 +27,25 @@ router
 
 router
     .route('/login')
-    .post((req, res) => {
+    .post(passport.authenticate('local'), (req, res) => {
         db.User
             .findOne({ email: req.body.email })
-            .then(data => {
-                res.json(data);
-            })
-            .catch(err => {
-                res.json(err);
-            })
+            .then(data => res.end())
+            .catch(err => res.json(err));
+    })
+
+router
+    .route('/logout')
+    .post(isAuthenticated, (req, res) => {
+        req.logout();
+        res.end();
+    })
+
+router
+    .route('/getCredentials')
+    .get(isAuthenticated, (req, res) => {
+        const { _id, admin, name } = req.user;
+        res.json({ _id, admin, name });
     })
 
 module.exports = router;

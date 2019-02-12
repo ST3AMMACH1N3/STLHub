@@ -11,5 +11,13 @@ export default {
 
     login: function(data) {
         return axios.post('/api/login', data);
+    },
+
+    logout: function() {
+        return axios.post('/api/logout');
+    },
+
+    getCredentials: function() {
+        return axios.get('/api/getCredentials');
     }
 };

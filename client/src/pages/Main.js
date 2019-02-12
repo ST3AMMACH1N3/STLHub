@@ -10,6 +10,7 @@ import Announcements from '../components/Announcements';
 
 class Main extends Component {
     state = {
+        creds: null,
         images: [{
             src: 'https://static.wixstatic.com/media/3c9dac_57b02779cd1a46a2823267f2c9008956~mv2_d_2048_1366_s_2.jpg/v1/fill/w_980,h_620,al_c,q_85,usm_0.66_1.00_0.01/3c9dac_57b02779cd1a46a2823267f2c9008956~mv2_d_2048_1366_s_2.webp'
         },
@@ -57,6 +58,28 @@ class Main extends Component {
                 announcements: content.data.announcements
             })
         });
+        this.getCredentials();
+    }
+
+    getCredentials = () => {
+        API
+            .getCredentials()
+            .then(response => {
+                console.log(response);
+                if (response.data.name) {
+                    this.setState({ creds: response.data }, (err, newState) => console.log(newState));
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
+    logout = () => {
+        API
+            .logout()
+            .then(response => {
+                this.setState({creds: null});
+            })
+            .catch(err => console.log(err))
     }
 
     render() {
