@@ -54,11 +54,11 @@ class RegisterFields extends Component {
                         value={this.state.password}
                         name='password'
                         onChange={this.handleInputChange}
-                        type='text'
+                        type='password'
                         placeholder='Password'
                     />
                     <br />
-                    <button onClick={this.handleFormSubmit}>Log In</button>
+                    <button onClick={this.handleFormSubmit}>Register</button>
 
                 </form>
                 <Link to='/login'>Log In</Link>

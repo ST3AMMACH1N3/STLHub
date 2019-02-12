@@ -20,48 +20,32 @@ function Header() {
             {/* <!-- Collapsible content --> */}
             <div className='collapse navbar-collapse' id='navbarSupportedContent1'>
                 {/* <!-- Links --> */}
-                
-                {(window.location.href === 'http://localhost:3000/ticketing') ? 
                 <ul className='navbar-nav mr-auto'>
                     <li className='nav-item active' data-toggle="collapse" data-target=".navbar-collapse">
-                        <Link className='nav-link' to='/#Header'>Home <span className='sr-only'>(current)</span></Link>
-                    </li>
-                    <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
-                        <Link className='nav-link' to='/#mainShow'>Current Show</Link>
-                    </li>
-                    <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
-                        <Link className='nav-link' to='/#Survivor'>Survivor</Link>
-                    </li>
-                    <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
-                        <Link className='nav-link' to='/#Lessons'>Private Lessons</Link>
-                    </li>
-                    <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
-                        <Link className='nav-link' to='/#Map'>Directions</Link>
-                    </li> 
-                </ul>:
-                <ul className='navbar-nav mr-auto'>
-                    <li className='nav-item active' data-toggle="collapse" data-target=".navbar-collapse">
-                        <a className='nav-link' href='#Header' >Home <span className='sr-only'>(current)</span></a>
+                        <a className='nav-link' href='/#Header' >Home <span className='sr-only'>(current)</span></a>
                     </li>
                     <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
                         <Link className='nav-link' to='/login'>Log In</Link>
                     </li>
                     <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
-                        <a className='nav-link' href='#mainShow' >Current Show</a>
+                        <Link className='nav-link' to='/about'>About</Link>
                     </li>
                     <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
-                        <a className='nav-link' href='#survivor' >Survivor</a>
+                        <a className='nav-link' href='/#mainShow' >Current Show</a>
                     </li>
                     <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
-                        <a className='nav-link' href='#mainCamps' >Camps</a>
+                        <a className='nav-link' href='/#survivor' >Survivor</a>
                     </li>
                     <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
-                        <a className='nav-link' href='#mainLessons' >Private Lessons</a>
+                        <a className='nav-link' href='/#mainCamps' >Camps</a>
                     </li>
                     <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
-                        <a className='nav-link' href='#mainMap' >Directions</a>
+                        <a className='nav-link' href='/#mainLessons' >Private Lessons</a>
                     </li>
-                </ul>}
+                    <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
+                        <a className='nav-link' href='/#mainMap' >Directions</a>
+                    </li>
+                </ul>
                 {/* <!-- Links --> */}
 
             </div>
@@ -74,3 +58,5 @@ function Header() {
 };
 
 export default Header;
+
+// window.location.href

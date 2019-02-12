@@ -54,7 +54,6 @@ class Map extends Component {
         return (
             <div className='mainMap' id='mainMap'>
                 <h1>Map</h1>
-                <h2>Hide the API Key</h2>
                 <h4>2721 N. Forsyth Road Suites 321 & 410 Winter Park, FL 32746</h4>
                 <a id='directions' href='/' target='_blank' rel='noopener noreferrer'>Directions</a>
                 <div id='map'></div>
