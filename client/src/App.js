@@ -6,9 +6,10 @@ import Ticketing from './pages/Ticketing';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import About from './pages/About';
 // import Checkout from './pages/Checkout';
 // import Thankyou from './pages/Thankyou';
-// import NoMatch from './pages/NoMatch';
+import NoMatch from './pages/NoMatch';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -23,9 +24,10 @@ function App() {
           <Route exact path='/admin' component={Admin} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
+          <Route exact path='/about' component={About} />
           {/* <Route exact path='/checkout' component={Checkout} /> */}
           {/* <Route exact path='/thankyou' component={Thankyou} /> */}
-          {/* <Route component={NoMatch}/> */}
+          <Route component={NoMatch}/>
         </Switch>
         <Footer />
       </div>

@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import './style.css';
 
 class AdminShowForm extends Component {
-    state = {
-        newShowTitle: '',
-        newShowDate: '',
-        newShowTime: '',
-        newShowPrice: ''
+    constructor(props){
+        super(props)
+
+        this.state = {
+            newShowTitle: props.shows.title,
+            newShowDate: props.shows.date,
+            newShowPrice: props.shows.ticketPrice
+        };
     };
 
     handleInputChange = event => {
@@ -22,11 +25,10 @@ class AdminShowForm extends Component {
         this.setState({
             newShowTitle: '',
             newShowDate: '',
-            newShowTime: '',
             newShowPrice: ''
         });
 
-        console.log(this.state.newShowTitle + ', ' + this.state.newShowDate + ', ' + this.state.newShowTime + ', ' + this.state.newShowPrice)
+        console.log(this.state.newShowTitle + ', ' + this.state.newShowDate + ', ' + this.state.newShowPrice)
 
 
     };
@@ -34,7 +36,6 @@ class AdminShowForm extends Component {
     render() {
         return(
             <div>
-                <h4>Add a Show:</h4>
                 <form>
                     <input 
                     value={this.state.newShowTitle}
@@ -53,14 +54,6 @@ class AdminShowForm extends Component {
                     />
                     <br />
                     <input 
-                    value={this.state.newShowTime}
-                    name='newShowTime'
-                    onChange={this.handleInputChange}
-                    type='text'
-                    placeholder='Enter Show Time'
-                    />
-                    <br />
-                    <input 
                     value={this.state.newShowPrice}
                     name='newShowPrice'
                     onChange={this.handleInputChange}
@@ -68,7 +61,8 @@ class AdminShowForm extends Component {
                     placeholder='Enter Show Price'
                     />
                     <br />
-                    <button onClick={this.handleFormSubmit}>Add</button>
+                    <button>Save</button>
+                    <button>Delete</button>
                 </form>
             </div>
         );
