@@ -1,16 +1,17 @@
-import React, {Component} from 'react'
-import API from '../utils/API'
-import AdminPictureTitle from '../components/AdminPictureTitle'
-import AdminShowTitle from '../components/AdminShowTitle'
-import AdminSurvivorTitle from '../components/AdminSurvivorTitle'
-import AdminCampTitle from '../components/AdminCampTitle'
-import AdminAnnouncementTitle from '../components/AdminAnnouncementTitle'
-import AdminPictureForm from '../components/AdminPictureForm'
-import AdminShowForm from '../components/AdminShowForm'
-import AdminSurvivorForm from '../components/AdminSurvivorForm'
-import AdminCampForm from '../components/AdminCampForm'
-import AdminAnnouncementForm from '../components/AdminAnnouncementForm'
-import AdminAddBtn from '../components/AdminAddBtn'
+import React, {Component} from 'react';
+import API from '../utils/API';
+import AdminPictureTitle from '../components/AdminPictureTitle';
+import AdminShowTitle from '../components/AdminShowTitle';
+import AdminSurvivorTitle from '../components/AdminSurvivorTitle';
+import AdminCampTitle from '../components/AdminCampTitle';
+import AdminAnnouncementTitle from '../components/AdminAnnouncementTitle';
+import AdminPictureForm from '../components/AdminPictureForm';
+import AdminShowForm from '../components/AdminShowForm';
+import AdminSurvivorForm from '../components/AdminSurvivorForm';
+import AdminCampForm from '../components/AdminCampForm';
+import AdminAnnouncementForm from '../components/AdminAnnouncementForm';
+import AdminAddBtn from '../components/AdminAddBtn';
+import { Redirect } from 'react-router-dom';
 
 class Admin extends Component {
     constructor(props) {
@@ -43,8 +44,8 @@ class Admin extends Component {
             })
         });
     }
-    
-    render() {
+
+    showPage = () => {
         return (
             <div>
                 <AdminPictureTitle />
@@ -74,6 +75,10 @@ class Admin extends Component {
                 <AdminAddBtn label='Announcment' />
             </div>
         )
+    }
+    
+    render() {
+        return (this.props.credentials && this.props.credentials.admin) ? this.showPage() : <Redirect to='/' />
     }
 }
 

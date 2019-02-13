@@ -1,6 +1,5 @@
-import React from 'react'
-import RegisterFields from '../components/RegisterFields'
-
+import React from 'react';
+import RegisterFields from '../components/RegisterFields';
 function Register() {
     return(
         <RegisterFields />

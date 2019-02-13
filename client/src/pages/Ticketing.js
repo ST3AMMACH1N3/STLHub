@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import TicketingMenu from '../components/TicketingMenu'
+import React, {Component} from 'react';
+import TicketingMenu from '../components/TicketingMenu';
 
 class Ticketing extends Component {
     constructor(props) {
@@ -11,7 +11,9 @@ class Ticketing extends Component {
 
     render() {
         return(
+            <div>
                 <TicketingMenu title={this.state.title}/>
+            </div>
         );
     };
 };
