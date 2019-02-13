@@ -10,6 +10,10 @@ router
     .get(pageController.findContent);
 
 router
+    .route('/shows')
+    .get(pageController.findShows);
+
+router
     .route('/createAccount')
     .post((req, res) => {
         db.User

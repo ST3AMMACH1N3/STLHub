@@ -6,25 +6,41 @@ class Ticketing extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            title: this.props.location.state ? this.props.location.state.title : '',
-            shows: []
+            shows: [],
+            selectedShow: {
+                dates: []
+            }
         };
     };
 
     componentDidMount = () => {
-        API.getContent().then(response => {
-            this.setState({ shows: response.data.shows });
-        });
+        API
+            .getShows()
+            .then(response => {
+                // let shows = [{ title: 'Xanadu', dates: [Date.now()] }]; //For testing the date drop down since there is only one show;
+                let shows = [];
+                response.data.forEach(({ title, date, seats, _id, ticketPrice }) => {
+                    let sameTitle = shows.findIndex(show => show.title === title);
+                    if (sameTitle !== -1) {
+                        shows[sameTitle].dates.push(date);
+                        return
+                    }
+                    shows.push({ title, dates: [date], ticketPrice, _id, seats });
+                });
+                this.setState({ shows });
+            })
+            .catch(err => console.log(err));
     }
 
-    handleSelection = event => {
-        
+    handleSelection = value => {
+        let selectedShow = this.state.shows.find(show => show.title === value);
+        this.setState({ selectedShow });
     }
 
     render() {
         return(
             <div>
-                <TicketingMenu title={this.state.title} shows={this.state.shows}/>
+                <TicketingMenu shows={this.state.shows} selectedShow={this.state.selectedShow} handleSelection={this.handleSelection}/>
             </div>
         );
     };

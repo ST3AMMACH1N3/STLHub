@@ -19,5 +19,9 @@ export default {
 
     getCredentials: function() {
         return axios.get('/api/getCredentials');
+    },
+
+    getShows: function() {
+        return axios.get('/api/shows');
     }
 };
