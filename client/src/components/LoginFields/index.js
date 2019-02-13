@@ -23,7 +23,10 @@ class LoginFields extends Component {
         event.preventDefault();
         API
             .login({ email: this.state.email, password: this.state.password })
-            .then(this.props.handleLogin)
+            .then(() => {
+                this.props.handleLogin();
+                window.location.href = '/';
+            })
             .catch(err => console.log(err))
         this.setState({
             email: '',
