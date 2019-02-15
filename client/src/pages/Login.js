@@ -1,9 +1,9 @@
-import React from 'react'
-import LoginFields from '../components/LoginFields'
+import React from 'react';
+import LoginFields from '../components/LoginFields';
 
-function Login() {
+function Login(props) {
     return(
-        <LoginFields />
+        <LoginFields handleLogin={props.handleLogin} />
     );
 };
 

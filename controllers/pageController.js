@@ -25,5 +25,15 @@ module.exports = {
             .catch(err => {
                 res.json(err)
             });
+    },
+
+    findShows: function(req, res) {
+        showController
+            .findAll()
+            .populate('seats')
+            .then(shows => {
+                res.json(shows);
+            })
+            .catch(err => console.log(err));
     }
 }
