@@ -1,0 +1,29 @@
+.staff-card {
+    overflow: auto;
+    margin: 5% 5% 5% 5%
+}
+.staff-name {
+    text-align: center;
+    margin-top: 25%;
+}
+.staff-roles {
+    text-align: center;
+}
+.about-left {
+    float: left;
+}
+.about-right {
+    float: right;
+}
+.Skye {
+    border-bottom: 3px solid #0022ff;
+}
+.Giana {
+    border-bottom: 3px solid #00ff00;
+}
+.Aria {
+    border-bottom: 3px solid orangered;
+}
+.Caroline {
+    border-bottom: 3px solid #00ffdd;
+}

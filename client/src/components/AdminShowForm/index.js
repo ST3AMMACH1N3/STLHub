@@ -37,7 +37,7 @@ class AdminShowForm extends Component {
         return(
             <div>
                 <form>
-                    <input 
+                    <input className='admin-input'
                     value={this.state.newShowTitle}
                     name='newShowTitle'
                     onChange={this.handleInputChange}
@@ -45,7 +45,7 @@ class AdminShowForm extends Component {
                     placeholder='Enter Show Title'
                     />
                     <br />
-                    <input 
+                    <input className='admin-input'
                     value={this.state.newShowDate}
                     name='newShowDate'
                     onChange={this.handleInputChange}
@@ -53,7 +53,7 @@ class AdminShowForm extends Component {
                     placeholder='Enter Show Date'
                     />
                     <br />
-                    <input 
+                    <input className='admin-input'
                     value={this.state.newShowPrice}
                     name='newShowPrice'
                     onChange={this.handleInputChange}

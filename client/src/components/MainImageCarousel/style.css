@@ -1,3 +1,7 @@
+body {
+  background: #000000;
+  color: #ffffff;
+}
 .container {
   margin: 0 auto;
   padding: 0px;
@@ -6,6 +10,15 @@
 }
 .slick-slider {
   margin: 30px auto 50px;
+}
+.slick-dots li button:before {
+  color: #fff;
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #fff;
+  opacity: 1;
 }
 .slick-arrow {
   background-color: #00000000;

@@ -39,44 +39,44 @@ class AdminSurvivorForm extends Component {
         return (
             <div>
                 <form>
-                    <input 
+                    <input className='admin-input'
                     value={this.state.title}
                     name='title'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Theme'
+                    placeholder='Theme'
                     />
                     <br />
-                    <input 
+                    <input className='admin-input'
                     value={this.state.dates}
                     name='dates'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Dates'
+                    placeholder='Dates'
                     />
                     <br />
-                    <input 
+                    <textarea className='admin-input'
                     value={this.state.description}
                     name='description'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Description'
+                    placeholder='Description'
                     />
                     <br />
-                    <input 
+                    <input className='admin-input'
                     value={this.state.tuition}
                     name='tuition'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Tuition Price'
+                    placeholder='Tuition Price'
                     />
                     <br />
-                    <input 
+                    <input className='admin-input'
                     value={this.state.image}
                     name='image'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Image'
+                    placeholder='Image'
                     />
                     <br />
                     <button>Save</button>

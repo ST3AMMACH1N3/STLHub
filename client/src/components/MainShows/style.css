@@ -1,20 +1,5 @@
 .mainShow {
     text-align: center;
-    border: 2px solid black;
-}
-
-.currentShow {
-
-}
-
-.showTitle {
-
-}
-
-.showDate {
-
-}
-
-.showReserveBtn {
-
+    border-bottom: 30px solid #8800aa;
+    padding: 10%;
 }

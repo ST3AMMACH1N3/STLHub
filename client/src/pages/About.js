@@ -36,10 +36,10 @@ class About extends Component {
             <div>
                 <AboutTitle />
                 <AboutMission />
-                <AboutStaffCard staff={this.state.skye} />
-                <AboutStaffCard staff={this.state.giana} />
-                <AboutStaffCard staff={this.state.aria} />
-                <AboutStaffCard staff={this.state.caroline} />
+                <AboutStaffCard staff={this.state.skye} side='about-left' />
+                <AboutStaffCard staff={this.state.giana} side='about-right' />
+                <AboutStaffCard staff={this.state.aria} side='about-left' />
+                <AboutStaffCard staff={this.state.caroline} side='about-right' />
             </div>
         );
     };

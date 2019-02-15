@@ -5,7 +5,7 @@ import './style.css';
 function Header() {
 
     return (
-        <div>
+        <div className='header'>
             {/* <!--Navbar--> */}
             <nav className='navbar navbar-light light-blue lighten-4'>
 
