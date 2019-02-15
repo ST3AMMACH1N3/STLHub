@@ -1,0 +1,21 @@
+.seat {
+    position: absolute;
+    border: 1px solid #fff;
+    font-weight: 400;
+    line-height: 2rem;
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
+    user-select: none;
+}
+
+.open {
+    background: #000;
+}
+
+.selected {
+    background: #c02f1d;
+}
+
+.reserved {
+    background: #666;
+}

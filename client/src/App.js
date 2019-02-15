@@ -53,12 +53,12 @@ class App extends Component {
                 <div>
                     <Header credentials={this.state.credentials} handleLogout={this.logout} />
                     <Switch>
-                        <Route exact path='/' render={() => <Main credentials={this.state.credentials} />} />
-                        <Route exact path='/ticketing' render={() => <Ticketing credentials={this.state.credentials} />} />
-                        <Route exact path='/admin' render={() => <Admin credentials={this.state.credentials} />} />
-                        <Route exact path='/login' render={() => <Login credentials={this.state.credentials} handleLogin={this.getCredentials} />} />
-                        <Route exact path='/register' render={() => <Register credentials={this.state.credentials} />} />
-                        <Route exact path='/about' render={() => <About credentials={this.state.credentials} />} />
+                        <Route exact path='/' render={(...args) => <Main credentials={this.state.credentials} {...args} />} />
+                        <Route exact path='/ticketing' render={(...args) => <Ticketing credentials={this.state.credentials} {...args}  />} />
+                        <Route exact path='/admin' render={(...args) => <Admin credentials={this.state.credentials} {...args} />} />
+                        <Route exact path='/login' render={(...args) => <Login credentials={this.state.credentials} handleLogin={this.getCredentials} {...args} />} />
+                        <Route exact path='/register' render={(...args) => <Register credentials={this.state.credentials} {...args} />} />
+                        <Route exact path='/about' render={(...args) => <About credentials={this.state.credentials} {...args} />} />
                         {/* <Route exact path='/checkout' component={Checkout} /> */}
                         {/* <Route exact path='/thankyou' component={Thankyou} /> */}
                         <Route component={NoMatch}/>
