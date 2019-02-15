@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
 
-function Header() {
+function Header(props) {
 
     return (
         <div>
@@ -25,8 +25,12 @@ function Header() {
                         <a className='nav-link' href='/#Header' >Home <span className='sr-only'>(current)</span></a>
                     </li>
                     <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
-                        <Link className='nav-link' to='/login'>Log In</Link>
+                        {props.credentials ? <a className='nav-link' href='#' onClick={props.handleLogout}>Log Out</a> : <Link className='nav-link' to='/login'>Log In</Link> }
                     </li>
+                    {(props.credentials && props.credentials.admin) ?
+                    <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
+                        <Link className='nav-link' to='/admin'>Admin</Link>
+                    </li> : ''}
                     <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
                         <Link className='nav-link' to='/about'>About</Link>
                     </li>

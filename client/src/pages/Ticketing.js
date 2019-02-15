@@ -1,18 +1,23 @@
-import React, {Component} from 'react'
-import TicketingMenu from '../components/TicketingMenu'
+import React, {Component} from 'react';
+import TicketingMenu from '../components/TicketingMenu';
 
 class Ticketing extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            title: this.props.location.state ? this.props.location.state.title : ''
-        };
-    };
+            title: ''
+        }
+    }
+
+    componentDidMount = () => {
+        console.log(this.props);
+        this.setState({
+            title: this.props[0].location.state ? this.props[0].location.state.title : ''
+        })
+    }
 
     render() {
-        return(
-                <TicketingMenu title={this.state.title}/>
-        );
+        return <TicketingMenu title={this.state.title}/>;
     };
 };
 

@@ -4,5 +4,6 @@ module.exports = {
     Seat: require('./seat'),
     Camp: require('./camp'),
     Survivor: require('./survivor'),
-    Announcement: require('./announcement')
+    Announcement: require('./announcement'),
+    User: require('./user')
 };
