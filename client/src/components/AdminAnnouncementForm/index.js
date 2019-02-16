@@ -33,7 +33,7 @@ class AdminAnnouncementForm extends Component {
         return(
             <div>
                 <form>
-                    <input 
+                    <input className='admin-input'
                     value={this.state.title}
                     name='title'
                     onChange={this.handleInputChange}
@@ -41,7 +41,7 @@ class AdminAnnouncementForm extends Component {
                     placeholder='Enter Camp Name'
                     />
                     <br />
-                    <input 
+                    <textarea className='admin-input'
                     value={this.state.description}
                     name='description'
                     onChange={this.handleInputChange}

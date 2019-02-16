@@ -1,6 +1,16 @@
 .mainLessons {
     text-align: center;
-    border: 2px solid black;
+    border-bottom: 30px solid #00ffdd;
+    padding: 10% 5% 10% 5%;
+}
+.lessons-message, .lessons-field {
+    width: 90%;
+    max-width: 500px;
+
+}
+.lessons-message {
+    resize: none;
+    height: 200px;
 }
 /* Hides the increment arrows on the phone number form */
 input[type=number]::-webkit-inner-spin-button, 

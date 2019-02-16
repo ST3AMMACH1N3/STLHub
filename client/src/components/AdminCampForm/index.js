@@ -47,67 +47,67 @@ class AdminCampForm extends Component {
         return(
             <div>
                 <form>
-                    <input 
+                    <input className='admin-input'
                     value={this.state.title}
                     name='title'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Camp Name'
+                    placeholder='Camp Name'
                     />
                     <br />
-                    <input 
+                    <input className='admin-input'
                     value={this.state.dates}
                     name='dates'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Camp Dates'
+                    placeholder='Camp Dates'
                     />
                     <br />
-                    <input 
+                    <textarea className='admin-input'
                     value={this.state.description}
                     name='description'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter a Description'
+                    placeholder='Description'
                     />
                     <br />
-                    <input 
+                    <input className='admin-input'
                     value={this.state.tuition}
                     name='tuition'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Camp Tuition Price'
+                    placeholder='Camp Tuition Price'
                     />
                     <br />
-                    <input 
+                    <input className='admin-input'
                     value={this.state.showDate}
                     name='showDate'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Camp Show Date'
+                    placeholder='Camp Show Date'
                     />
                     <br />
-                    <input 
+                    <input className='admin-input'
                     value={this.state.ticketPrice}
                     name='ticketPrice'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Camp Show Ticket Price'
+                    placeholder='Camp Show Ticket Price'
                     />
                     <br />
+                    <label className='extended-day-label'>Extended Day</label>
                     <input 
                     value={this.state.extendedDay}
                     name='extendedDay'
                     onChange={this.handleInputChange}
                     type='checkbox' />
-                    <label>Extended Day</label>
                     <br />
-                    <input 
+                    <input className='admin-input'
                     value={this.state.extendedDayPrice}
                     name='extendedDayPrice'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Camp Extended Day Price'
+                    placeholder='Camp Extended Day Price'
                     />
                     <br />
                     <button>Save</button>

@@ -1,4 +1,13 @@
 .mainThanks {
     text-align: center;
-    border: 2px solid black;
+    border-bottom: 30px solid #00ffdd;
+    padding: 10% 5% 10% 5%;
+}
+#facebookLogo {
+    height: 50px;
+    width: 50px;
+}
+#instagramLogo {
+    height: 50px;
+    width: 50px;
 }

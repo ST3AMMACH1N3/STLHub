@@ -31,7 +31,7 @@ class AdminPictureForm extends Component {
             <div>
                 <h4>Add an Image:</h4>
                 <form>
-                    <input 
+                    <input className='admin-input'
                     value={this.state.addedImage}
                     name='addedImage'
                     onChange={this.handleInputChange}

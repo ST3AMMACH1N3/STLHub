@@ -1,6 +1,6 @@
 .mainMap {
     text-align: center;
-    border: 2px solid black;
+    padding-top: 10%;
 }
 
 #map {
@@ -8,7 +8,6 @@
     width: 100%;
 }
 
-#facebookLogo {
-    height: 50px;
-    width: 50px;
+#directions {
+    color: #ff3333;
 }
