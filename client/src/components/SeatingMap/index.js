@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Seat from '../Seat';
+import API from '../../utils/API';
 import './style.css';
 
 class SeatingMap extends Component {
@@ -57,11 +58,11 @@ class SeatingMap extends Component {
     }
 
     handleClick = id => {
-            let newArray = JSON.parse(JSON.stringify(this.state.seats));
+            let newArray = this.state.seats.slice(0);
             // console.log(newArray);
             if (newArray[id].status === 'open') {
-                newArray[id].status = 'reserved';
-            } else if (newArray[id].status === 'reserved') {
+                newArray[id].status = 'selected';
+            } else if (newArray[id].status === 'selected') {
                 newArray[id].status = 'open';
             }
             this.setState({ seats: newArray });
@@ -73,7 +74,10 @@ class SeatingMap extends Component {
         })
         return (
             <div className='seatMap'>
-            {seatComps}
+                <div className='innerMap'>
+                    {seatComps}
+                    <div className='soundTable' style={{ width: this.state.size * 3, height: this.state.soundTable - this.state.size * 2, top: this.breakArray(this.props.seats)[0].length / 2 * this.state.size + this.state.size, left: 0 }}>Sound Table</div>
+                </div>
             </div>
         );
     }

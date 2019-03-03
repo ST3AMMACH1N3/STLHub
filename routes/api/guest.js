@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const siteObj = require('../../controllers/siteObj');
 const guestController = require('../../controllers/guestController');
 const pageController = require('../../controllers/pageController');
 const passport = require('../../config/passport');
@@ -7,11 +8,25 @@ const db = require('../../models');
 
 router
     .route('/content')
-    .get(pageController.findContent);
+    .get((req, res) => {
+        let content = siteObj.getMain();
+        if (!content.announcements.length && !content.camps.length && !content.shows.length && !content.survivors.length) {
+            res.status(500).send('Server failed to load content');
+            return;
+        }
+        res.json(content);
+    });
 
 router
     .route('/shows')
-    .get(pageController.findShows);
+    .get((req, res) => {
+        let shows = siteObj.getShows();
+        if (!shows.length) {
+            res.status(500).send('Server failed to load shows');
+            return;
+        }
+        res.json(shows);
+    });
 
 router
     .route('/createAccount')
@@ -50,6 +65,30 @@ router
     .get(isAuthenticated, (req, res) => {
         const { _id, admin, name } = req.user;
         res.json({ _id, admin, name });
+    })
+
+router
+    .route('/reservations')
+    .get(isAuthenticated, (req, res) => {
+        if (!siteObj.shows.length) {
+            res.status(500).send('Server failed to load shows');
+            return;
+        }
+        db.User
+            .findById(req.user._id)
+            .populate('reservations')
+            .then(dbUser => {
+                if (!dbUser) {
+                    res.status(500).send('User not found');
+                    return;
+                }
+                return db.Reservation
+                            .find({ _id: { $in: dbUser.reservations } })
+                            .populate('seats');
+            })
+            .then(dbReservations => {
+                res.json(dbReservations);
+            })
     })
 
 module.exports = router;

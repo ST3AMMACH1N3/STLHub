@@ -38,6 +38,9 @@ class Main extends Component {
     componentDidMount = () => {
         API.getContent().then(content => {
             console.log(content);
+            if (content.data.shows.length < 1) {
+                return;
+            }
             let dateObj = new Date(content.data.shows[0].date)
             let dateArray = dateObj.toString().split(' ')
             let hours = dateObj.getHours() > 12 ? dateObj.getHours() - 12 : dateObj.getHours()

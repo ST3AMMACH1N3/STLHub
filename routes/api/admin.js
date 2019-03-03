@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const adminController = require('../../controllers/adminController');
+const siteObj = require('../../controllers/siteObj');
 const isAuthenticated = require('../../config/middleware/isAuthenticated');
 const isAdmin = require('../../config/middleware/isAdmin');
 
@@ -8,43 +9,60 @@ router.use(isAdmin);
 
 router
     .route('/Show')
-    .get(adminController.findShows)
     .post(adminController.createShow)
     .put(adminController.editShow)
-    .delete(adminController.deleteShow);
+    .delete(adminController.deleteShow)
+    .get((req, res) => {
+        res.json(siteObj.shows)
+    });
 
 router
-    .route('/Show/:id')
-    .get(adminController.findShowById);
+    .route('/show/:id')
+    .get((req, res) => {
+        let show = siteObj.shows.find(show => show._id === req.params.id);
+        res.json(show);
+    });
 
 router
-    .route('/Content')
-    .get(adminController.findContent)
+    .route('/content')
     .post(adminController.createContent)
     .put(adminController.editContent)
-    .delete(adminController.deleteContent);
+    .delete(adminController.deleteContent)
+    .get((req, res) => {
+        let content = siteObj.getMain();
+        res.json(content);
+    });
 
 router
-    .route('/Content/:id')
-    .get(adminController.findContentById);
+    .route('/content/:id')
+    .get((req, res) => {
+        let content = siteObj.getMain();
+        let item = content[req.body.contentType].find(content => content._id === req.params.id);
+        res.json(item);
+    });
 
 router
-    .route('/Reservation')
-    .get(adminController.findReservations)
+    .route('/reservation')
     .post(adminController.createReservation)
     .put(adminController.payForReservation)
-    .delete(adminController.deleteContent);
+    .delete(adminController.deleteContent)
+    .get((req, res) => {
+        res.json(siteObj.reservations);
+    });
 
 router
-    .route('/Reservation/addSeat')
+    .route('/reservation/addSeat')
     .put(adminController.addSeatToReservation);
 
 router
-    .route('/Reservation/removeSeat')
+    .route('/reservation/removeSeat')
     .put(adminController.removeSeatFromReservation);
 
 router
-    .route('/Reservation/:id')
-    .get(adminController.findReservationById);
+    .route('/reservation/:id')
+    .get((req, res) => {
+        let reservation = siteObj.reservations.find(reservation => reservation._id === req.params.id);
+        res.json(reservation);
+    });
 
 module.exports = router;

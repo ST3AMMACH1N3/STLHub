@@ -7,7 +7,7 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     email: { type: String, required: true , unique: true },
     admin: { type: Boolean, default: false },
-    reservations: { type: Schema.Types.ObjectId, ref: 'Reservation' }
+    reservations: [{ type: Schema.Types.ObjectId, ref: 'Reservation' }]
 });
 
 userSchema.methods.validPassword = function(password) {

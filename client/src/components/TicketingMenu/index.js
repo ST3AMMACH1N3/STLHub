@@ -77,7 +77,7 @@ class TicketingMenu extends Component {
                     })}
                 </select>
                 : '' }
-                {this.state.selectedShow ? <SeatingMap seats={this.state.selectedShow.seats} /> : <h1>Not here</h1>}
+                {this.state.selectedShow ? <SeatingMap seats={this.state.selectedShow.seats} /> : ''}
                 <TicketingBtn />
             </div>
         );
