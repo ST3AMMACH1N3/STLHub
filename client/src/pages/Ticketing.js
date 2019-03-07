@@ -10,14 +10,13 @@ class Ticketing extends Component {
     }
 
     componentDidMount = () => {
-        console.log(this.props);
         this.setState({
             title: this.props[0].location.state ? this.props[0].location.state.title : ''
         })
     }
 
     render() {
-        return <TicketingMenu title={this.state.title}/>;
+        return <TicketingMenu title={this.state.title} credentials={this.props.credentials}/>;
     };
 };
 

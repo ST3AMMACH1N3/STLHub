@@ -10,7 +10,9 @@ class TicketingMenu extends Component {
             shows: [],
             showData: [],
             selectedTitle: '',
-            selectedShow: ''
+            selectedShow: '',
+            reservations: [],
+            reservation: ''
         };
     };
 
@@ -35,6 +37,15 @@ class TicketingMenu extends Component {
                 });
             })
             .catch(err => console.log(err));
+
+        if (this.props.credentials) {
+            API
+                .getReservations()
+                .then(response => {
+                    console.log(response.data);
+                    this.setState({ reservations: response.data });
+                })
+        }
     }
 
     handleDateSelection = value => {
@@ -43,8 +54,22 @@ class TicketingMenu extends Component {
             let selectedDate = new Date(value);
             return (show.title === this.state.selectedTitle && date - selectedDate === 0);
         });
+
+        let reservation = '';
+        if (this.state.reservations.length) {
+            reservation = this.state.reservations.find(reservation => reservation.show === selectedShow._id);
+            if (reservation) {
+                selectedShow.seats.map(seat => {
+                    if (reservation.seats.indexOf(seat._id) !== -1) {
+                        seat.status = 'selected';
+                    }
+                    return seat;
+                })
+            }
+        }
+        
         if (selectedShow) {
-            this.setState({ selectedShow });
+            this.setState({ selectedShow, reservation });
         }
     }
 
@@ -53,6 +78,16 @@ class TicketingMenu extends Component {
         if (selectedShow) {
             this.setState({ selectedTitle: selectedShow.title });
         }
+    }
+
+    handleReserve = modifiedSeats => {
+        console.log(modifiedSeats);
+        console.log(this.state.reservation);
+        if (this.state.reservation) {
+            API.editReservation({ show: this.state.selectedShow._id, reservation: this.state.reservation._id, seats: modifiedSeats });
+            return;
+        }
+        API.createReservation({ show: this.state.selectedShow._id, seats: modifiedSeats});
     }
 
     render() {
@@ -77,8 +112,7 @@ class TicketingMenu extends Component {
                     })}
                 </select>
                 : '' }
-                {this.state.selectedShow ? <SeatingMap seats={this.state.selectedShow.seats} /> : ''}
-                <TicketingBtn />
+                {this.state.selectedShow ? <SeatingMap seats={this.state.selectedShow.seats} loggedIn={(this.props.credentials)} handleReserve={this.handleReserve}/> : ''}
             </div>
         );
     };

@@ -60,6 +60,60 @@ const site = {
             .catch(err => console.log(err));
     },
 
+    loadReservation: function(id) {
+        db.Reservation
+            .findById(id)
+            .populate('seats')
+            .then(dbReservation => {
+                if (!dbReservation) {
+                    console.log('Reservation Failed to Load!');
+                    return;
+                }
+                let resIndex = this.reservations.findIndex(reservation => reservation._id === dbReservation._id);
+                if (resIndex !== -1) {
+                    this.reservations[resIndex] = dbReservation;
+                    return;
+                }
+                this.reservations.push(dbReservation);
+            })
+            .catch(err => console.log(err));
+    },
+
+    loadReservations: function() {
+        db.Reservation
+            .find()
+            .populate('seats')
+            .then(dbReservations => {
+                if (!dbReservations) {
+                    console.log('Reservations Failed to Load!');
+                    return;
+                }
+                this.reservations = dbReservations;
+            })
+    },
+
+    loadShow: function(id) {
+        db.Show
+            .findById(id)
+            .populate('reservations')
+            .populate('seats')
+            .then(dbShow => {
+                if (!dbShow) {
+                    console.log('Show Failed to Load!');
+                    return;
+                }
+                // console.log(dbShow);
+                // console.log(id);
+                let showIndex = this.shows.findIndex(show => show._id === dbShow._id);
+                if (showIndex !== -1) {
+                    this.shows[showIndex] = dbShow;
+                    return;
+                }
+                this.shows.push(dbShow);
+            })
+            .catch(err => console.log(err));
+    },
+
     loadShows: function() {
         let tempShows = [];
         db.Show

@@ -9,6 +9,14 @@ export default {
         return axios.post('/api/createAccount');
     },
 
+    createReservation: function(data) {
+        return axios.post('/api/reservation', data);
+    },
+
+    editReservation: function(data) {
+        return axios.put('/api/reservation', data);
+    },
+
     login: function(data) {
         return axios.post('/api/login', data);
     },
@@ -23,5 +31,9 @@ export default {
 
     getShows: function() {
         return axios.get('/api/shows');
+    },
+
+    getReservations: function() {
+        return axios.get('/api/reservation');
     }
 };
