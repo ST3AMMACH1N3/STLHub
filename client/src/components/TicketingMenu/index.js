@@ -38,14 +38,13 @@ class TicketingMenu extends Component {
             })
             .catch(err => console.log(err));
 
-        if (this.props.credentials) {
-            API
-                .getReservations()
-                .then(response => {
-                    console.log(response.data);
+        API
+            .getReservations()
+            .then(response => {
+                if (Array.isArray(response.data)) {
                     this.setState({ reservations: response.data });
-                })
-        }
+                }
+            })
     }
 
     handleDateSelection = value => {
@@ -56,7 +55,7 @@ class TicketingMenu extends Component {
         });
 
         let reservation = '';
-        if (this.state.reservations.length) {
+        if (this.state.reservations.length > 0) {
             reservation = this.state.reservations.find(reservation => reservation.show === selectedShow._id);
             if (reservation) {
                 selectedShow.seats.map(seat => {

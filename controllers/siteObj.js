@@ -69,11 +69,17 @@ const site = {
                     console.log('Reservation Failed to Load!');
                     return;
                 }
-                let resIndex = this.reservations.findIndex(reservation => reservation._id === dbReservation._id);
+                let resIndex = this.reservations.findIndex(reservation => {
+                    let current = JSON.stringify(reservation._id);
+                    let data = JSON.stringify(dbReservation._id);
+                    return (current === data);
+                });
                 if (resIndex !== -1) {
+                    console.log('Reservation Updated in Cache');
                     this.reservations[resIndex] = dbReservation;
                     return;
                 }
+                console.log('Reservation Added to Cache');
                 this.reservations.push(dbReservation);
             })
             .catch(err => console.log(err));
@@ -102,13 +108,15 @@ const site = {
                     console.log('Show Failed to Load!');
                     return;
                 }
-                // console.log(dbShow);
-                // console.log(id);
-                let showIndex = this.shows.findIndex(show => show._id === dbShow._id);
+
+                let showIndex = this.shows.findIndex(show => JSON.stringify(show._id) === JSON.stringify(dbShow._id));
                 if (showIndex !== -1) {
+                    console.log('Show Updated in Cache');
                     this.shows[showIndex] = dbShow;
+                    // console.log(JSON.stringify(this.shows[showIndex].seats));
                     return;
                 }
+                console.log('Show Added to Cache')
                 this.shows.push(dbShow);
             })
             .catch(err => console.log(err));

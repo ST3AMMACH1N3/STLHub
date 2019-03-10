@@ -86,6 +86,10 @@ router
                             .find({ _id: { $in: dbUser.reservations } });
             })
             .then(dbReservations => {
+                if (!dbReservations.length) {
+                    res.status(500).send('Reservation not found');
+                    return;
+                }
                 res.json(dbReservations);
             })
             .catch(err => res.json(err));
@@ -105,9 +109,9 @@ router
                 db.Show
                     .findByIdAndUpdate(req.body.show, { $addToSet: { reservations: reservation._id } })
                     .then(dbShow => {
-                        console.log('Reservation added');
+                        console.log('Reservation added to database');
                         siteObj.loadShow(dbShow._id);
-                        siteObj.reservation(reservation._id);
+                        siteObj.loadReservation(reservation._id);
                     })
                     .catch(err => console.log(err));
                 db.User
@@ -147,12 +151,17 @@ router
             return;
         }
 
+        console.log('----------Beginning Seat Match----------');
         let seatsToRemove = [];
         let seatsToAdd = [];
+        let data = req.body.seats.map(seat => JSON.stringify(seat));
         for(let i = 0; i < show.seats.length; i++) {
-            if (req.body.seats.includes(show.seats[i]._id)) {
-                let owned = reservation.seats.find(seat => seat._id == show.seats[i]._id);
+            let current = JSON.stringify(show.seats[i]._id);
+            if (data.includes(current)) {
+                console.log('Seat was one selected');
+                let owned = reservation.seats.find(seat => JSON.stringify(seat._id) == JSON.stringify(show.seats[i]._id));
                 console.log(owned);
+                console.log(show.seats[i].status);
                 if (owned) {
                     seatsToRemove.push(owned._id);
                 } else if (!owned && show.seats[i].status !== 'reserved') {
@@ -172,6 +181,9 @@ router
             .updateMany({ _id: { $in: seatsToRemove } }, { status: 'open' })
             .then(response => {
                 return db.Seat.updateMany({ _id: { $in: seatsToAdd } }, { status: 'reserved' });
+            })
+            .then(response => {
+                return db.Reservation.findByIdAndUpdate(reservation._id, { $pull: { seats: { $in: seatsToRemove } } });
             })
             .then(response => {
                 return db.Reservation.findByIdAndUpdate(reservation._id, { $addToSet: { seats: { $each: seatsToAdd } } });
