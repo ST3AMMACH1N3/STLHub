@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import AdminActionBtn from '../AdminActionBtn';
 import './style.css';
 
 class AdminShowForm extends Component {
@@ -6,9 +7,9 @@ class AdminShowForm extends Component {
         super(props)
 
         this.state = {
-            newShowTitle: props.shows.title,
-            newShowDate: props.shows.date,
-            newShowPrice: props.shows.ticketPrice
+            newShowTitle: props.shows.title || '',
+            newShowDate: props.shows.date || '',
+            newShowPrice: props.shows.ticketPrice || ''
         };
     };
 
@@ -61,8 +62,8 @@ class AdminShowForm extends Component {
                     placeholder='Enter Show Price'
                     />
                     <br />
-                    <button>Save</button>
-                    <button>Delete</button>
+                    <AdminActionBtn label='Save' type='Show' _id={this.props.shows._id} content={this.state} handleSubmit={this.props.handleSave} />
+                    <AdminActionBtn label='Delete' type='Show' _id={this.props.shows._id} content={this.state} handleSubmit={this.props.handleDelete} />
                 </form>
             </div>
         );

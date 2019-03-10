@@ -45,34 +45,65 @@ class Admin extends Component {
         });
     }
 
+    handleAddForm = type => {
+        type = type.toLowerCase() + 's';
+        let newArray = this.state[type];
+        newArray.push({});
+        this.setState({
+            [type]: newArray
+        });
+    }
+
+    handleDelete = (type, id, content) => {
+
+    }
+
+    handleEdit = (type, content) => {
+        if (type === 'Show') {
+            API
+                .editShow(content)
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+            return;
+        }
+        API
+            .editContent(content)
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }
+
+    handleSave = (type, id, content) => {
+        console.log(content);
+    }
+
     showPage = () => {
         return (
             <div>
                 <AdminPictureTitle />
                 {this.state.images.map(images =>{
-                    return <AdminPictureForm key={images} images={images} />
+                    return <AdminPictureForm key={images} images={images} handleSave={this.handleSave} handleDelete={this.handleDelete} />
                 })}
-                <AdminAddBtn label='Picture'/>
+                <AdminAddBtn label='Image' handleSubmit={this.handleAddForm}/>
                 <AdminShowTitle />
                 {this.state.shows.map(shows =>{
-                    return <AdminShowForm key={shows} shows={shows} />
+                    return <AdminShowForm key={shows} shows={shows} handleSave={this.handleSave} handleDelete={this.handleDelete} />
                 })}
-                <AdminAddBtn label='Show' />
+                <AdminAddBtn label='Show' handleSubmit={this.handleAddForm}/>
                 <AdminSurvivorTitle />
                 {this.state.survivors.map(survivors =>{
-                    return <AdminSurvivorForm key={survivors} survivors={survivors} />
+                    return <AdminSurvivorForm key={survivors} survivors={survivors} handleSave={this.handleSave} handleDelete={this.handleDelete} />
                 })}
-                <AdminAddBtn label='Survivor' />
+                <AdminAddBtn label='Survivor' handleSubmit={this.handleAddForm}/>
                 <AdminCampTitle />
                 {this.state.camps.map(camps =>{
-                    return <AdminCampForm key={camps} camps={camps} />
+                    return <AdminCampForm key={camps} camps={camps} handleSave={this.handleSave} handleDelete={this.handleDelete} />
                 })}
-                <AdminAddBtn label='Camp' />
+                <AdminAddBtn label='Camp' handleSubmit={this.handleAddForm}/>
                 <AdminAnnouncementTitle />
                 {this.state.announcements.map(announcements =>{
-                    return <AdminAnnouncementForm key={announcements} announcements={announcements} />
+                    return <AdminAnnouncementForm key={announcements} announcements={announcements} handleSave={this.handleSave} handleDelete={this.handleDelete} />
                 })}
-                <AdminAddBtn label='Announcment' />
+                <AdminAddBtn label='Announcement' handleSubmit={this.handleAddForm}/>
             </div>
         )
     }

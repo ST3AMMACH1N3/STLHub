@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import AdminActionBtn from '../AdminActionBtn';
 import './style.css';
 
 class AdminAnnouncementForm extends Component {
@@ -17,17 +18,6 @@ class AdminAnnouncementForm extends Component {
             [name]: value
         });
     };
-    
-    handleFormSubmit = event => {
-        event.preventDefault();
-
-        this.setState({
-            title: [],
-            description: [],
-        });
-
-
-    };
 
     render() {
         return(
@@ -38,7 +28,7 @@ class AdminAnnouncementForm extends Component {
                     name='title'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Enter Camp Name'
+                    placeholder='Enter Announcement Title'
                     />
                     <br />
                     <textarea className='admin-input'
@@ -49,8 +39,8 @@ class AdminAnnouncementForm extends Component {
                     placeholder='Enter a Description'
                     />
                     <br />
-                    <button>Save</button>
-                    <button>Delete</button>
+                    <AdminActionBtn label='Save' type='Announcement' _id={this.props.announcements._id} content={this.state} handleSubmit={this.props.handleSave} />
+                    <AdminActionBtn label='Delete' type='Announcement' _id={this.props.announcements._id} content={this.state} handleSubmit={this.props.handleDelete} />
                 </form>
             </div>
         );

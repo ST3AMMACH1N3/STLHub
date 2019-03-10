@@ -1,5 +1,6 @@
-import React, {Component} from 'react'
-import './style.css'
+import React, {Component} from 'react';
+import AdminActionBtn from '../AdminActionBtn';
+import './style.css';
 
 class AdminSurvivorForm extends Component {
     constructor(props){
@@ -79,8 +80,8 @@ class AdminSurvivorForm extends Component {
                     placeholder='Image'
                     />
                     <br />
-                    <button>Save</button>
-                    <button>Delete</button>
+                    <AdminActionBtn label='Save' type='Survivor' _id={this.props.survivors._id} content={this.state} handleSubmit={this.props.handleSave} />
+                    <AdminActionBtn label='Delete' type='Survivor' _id={this.props.survivors._id} content={this.state} handleSubmit={this.props.handleDelete} />
                 </form>
             </div>
         ) 

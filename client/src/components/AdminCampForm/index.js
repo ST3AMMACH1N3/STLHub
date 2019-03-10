@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import AdminActionBtn from '../AdminActionBtn';
 import './style.css';
 
 class AdminCampForm extends Component {
@@ -110,8 +111,8 @@ class AdminCampForm extends Component {
                     placeholder='Camp Extended Day Price'
                     />
                     <br />
-                    <button>Save</button>
-                    <button>Delete</button>
+                    <AdminActionBtn label='Save' type='Camp' _id={this.props.camps._id} content={this.state} handleSubmit={this.props.handleSave} />
+                    <AdminActionBtn label='Delete' type='Camp' _id={this.props.camps._id} content={this.state} handleSubmit={this.props.handleDelete} />
                 </form>
             </div>
         );

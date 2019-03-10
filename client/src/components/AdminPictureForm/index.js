@@ -1,5 +1,6 @@
-import React, {Component} from 'react'
-import './style.css'
+import React, {Component} from 'react';
+import AdminActionBtn from '../AdminActionBtn';
+import './style.css';
 
 class AdminPictureForm extends Component {
     
@@ -38,8 +39,8 @@ class AdminPictureForm extends Component {
                     type='text'
                     />
                     <br />
-                    <button>Save</button>
-                    <button>Delete</button>
+                    <AdminActionBtn label='Save' type='Image' _id={this.props.images._id} content={this.state} handleSubmit={this.props.handleSave} />
+                    <AdminActionBtn label='Delete' type='Image' _id={this.props.images._id} content={this.state} handleSubmit={this.props.handleDelete} />
                 </form>
             </div>
         ) 

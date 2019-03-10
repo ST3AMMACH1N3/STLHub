@@ -1,28 +1,44 @@
 import axios from "axios";
 
-export default {
-    getContent: function() {
-        return axios.get('/api/content');
+export default { 
+    createAccount: function(data) {
+        return axios.post('/api/createAccount', data);
     },
-    
-    createAccount: function() {
-        return axios.post('/api/createAccount');
+
+    createContent: function(data) {
+        return axios.post('/api/admin/content', data);
     },
 
     createReservation: function(data) {
         return axios.post('/api/reservation', data);
     },
 
+    createShow: function(data) {
+        return axios.post('/api/admin/show', data);
+    },
+
+    editContent: function(data) {
+        return axios.put('/api/admin/content', data);
+    },
+
     editReservation: function(data) {
         return axios.put('/api/reservation', data);
     },
 
-    login: function(data) {
-        return axios.post('/api/login', data);
+    editShow: function(data) {
+        return axios.put('/api/admin/show', data);
     },
 
-    logout: function() {
-        return axios.post('/api/logout');
+    deleteContent: function(data) {
+        return axios.delete('/api/admin/content', data);
+    },
+
+    deleteShow: function(data) {
+        return axios.delete('/api/admin/show', data);
+    },
+
+    getContent: function() {
+        return axios.get('/api/content');
     },
 
     getCredentials: function() {
@@ -35,5 +51,13 @@ export default {
 
     getReservations: function() {
         return axios.get('/api/reservation');
-    }
+    },
+    
+    login: function(data) {
+        return axios.post('/api/login', data);
+    },
+
+    logout: function() {
+        return axios.post('/api/logout');
+    },
 };
