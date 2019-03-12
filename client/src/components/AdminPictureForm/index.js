@@ -5,7 +5,8 @@ import './style.css';
 class AdminPictureForm extends Component {
     
     state = {
-        addedImage: ''
+        url: '',
+        alt: ''
     }
 
     handleInputChange = event => {
@@ -14,18 +15,6 @@ class AdminPictureForm extends Component {
             [name]: value
         });
     };
-    
-    handleFormSubmit = event => {
-        event.preventDefault();
-
-        this.setState({
-            addedImage: ''
-        });
-
-        console.log(this.state.addedImage + ', ' + this.state.newShowTitle + ', ' + this.state.newShowDate + ', ' + this.state.newShowTime + ', ' + this.state.newShowPrice)
-
-
-    };
 
     render() {
         return (
@@ -33,14 +22,22 @@ class AdminPictureForm extends Component {
                 <h4>Add an Image:</h4>
                 <form>
                     <input className='admin-input'
-                    value={this.state.addedImage}
-                    name='addedImage'
+                    value={this.state.url}
+                    name='url'
                     onChange={this.handleInputChange}
                     type='text'
+                    placeholder='Enter Image Url'
                     />
                     <br />
-                    <AdminActionBtn label='Save' type='Image' _id={this.props.images._id} content={this.state} handleSubmit={this.props.handleSave} />
-                    <AdminActionBtn label='Delete' type='Image' _id={this.props.images._id} content={this.state} handleSubmit={this.props.handleDelete} />
+                    <input className='admin-input'
+                    value={this.state.alt}
+                    name='alt'
+                    onChange={this.handleInputChange}
+                    type='text'
+                    placeholder='Enter Image Description'
+                    />
+                    <AdminActionBtn label='Save' type='Image' _id={this.props.image._id} content={this.state} handleSubmit={this.props.handleSave} />
+                    <AdminActionBtn label='Delete' type='Image' _id={this.props.image._id} content={this.state} handleSubmit={this.props.handleDelete} />
                 </form>
             </div>
         ) 

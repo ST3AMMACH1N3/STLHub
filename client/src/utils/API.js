@@ -30,11 +30,11 @@ export default {
     },
 
     deleteContent: function(data) {
-        return axios.delete('/api/admin/content', data);
+        return axios.delete('/api/admin/content', { data });
     },
 
     deleteShow: function(data) {
-        return axios.delete('/api/admin/show', data);
+        return axios.delete('/api/admin/show', { data });
     },
 
     getContent: function() {

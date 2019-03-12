@@ -7,11 +7,11 @@ class AdminSurvivorForm extends Component {
         super(props)
 
         this.state = {
-            title: props.survivors.title,
-            dates: props.survivors.dates,
-            description: props.survivors.description,
-            tuition: props.survivors.tuition,
-            image: props.survivors.image
+            title: props.survivor.title,
+            dates: props.survivor.dates,
+            description: props.survivor.description,
+            tuition: props.survivor.tuition,
+            image: props.survivor.image
         }
     }
 
@@ -20,20 +20,6 @@ class AdminSurvivorForm extends Component {
         this.setState({
             [name]: value
         });
-    };
-    
-    handleFormSubmit = event => {
-        event.preventDefault();
-
-        this.setState({
-            title: '',
-            dates: '',
-            description: '',
-            tuition: '',
-            image: ''
-        });
-
-
     };
 
     render() {
@@ -77,11 +63,11 @@ class AdminSurvivorForm extends Component {
                     name='image'
                     onChange={this.handleInputChange}
                     type='text'
-                    placeholder='Image'
+                    placeholder='Image URL'
                     />
                     <br />
-                    <AdminActionBtn label='Save' type='Survivor' _id={this.props.survivors._id} content={this.state} handleSubmit={this.props.handleSave} />
-                    <AdminActionBtn label='Delete' type='Survivor' _id={this.props.survivors._id} content={this.state} handleSubmit={this.props.handleDelete} />
+                    <AdminActionBtn label='Save' type='Survivor' _id={this.props.survivor._id} content={this.state} handleSubmit={this.props.handleSave} />
+                    <AdminActionBtn label='Delete' type='Survivor' _id={this.props.survivor._id} content={this.state} handleSubmit={this.props.handleDelete} />
                 </form>
             </div>
         ) 

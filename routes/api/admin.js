@@ -52,20 +52,40 @@ router
         }
 
         db[contentType]
-            .findByIdAndUpdate(req.body.content._id, req.body.content)
-            .then(response => {
-                let path = contentType.toLowerCase();
-                let contentIndex = siteObj[path].findIndex(item => item._id == req.body.content._id);
+            .findByIdAndUpdate(req.body.content._id, req.body.content, { new: true })
+            .then(dbContent => {
+                let path = contentType.toLowerCase() + 's';
+                let contentIndex = siteObj[path].findIndex(item => JSON.stringify(item._id) === JSON.stringify(req.body.content._id));
                 if (contentIndex === -1) {
                     res.send('Content not found to edit');
                     console.log('Content not found to edit');
                     return;
                 }
 
-                console.log(response);
+                siteObj[path][contentIndex] = dbContent;
+                res.json(dbContent)
             })
+            .catch(err => res.json(err));
     })
     .delete((req, res) => {
+        console.log(req.body);
+        let contentType  = req.body.type;
+        if (!contentTypes.includes(contentType)) {
+            res.status(500).send('Invalid content type');
+            console.log('Invalid content type');
+            return;
+        }
+
+        db[contentType]
+            .findByIdAndDelete(req.body._id)
+            .then(response => {
+                console.log(response);
+                res.json(response);
+            })
+            .catch(err => {
+                console.log(err);
+                res.json(err);
+            })
 
     })
     .get((req, res) => {

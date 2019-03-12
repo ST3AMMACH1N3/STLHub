@@ -7,9 +7,9 @@ class AdminShowForm extends Component {
         super(props)
 
         this.state = {
-            newShowTitle: props.shows.title || '',
-            newShowDate: props.shows.date || '',
-            newShowPrice: props.shows.ticketPrice || ''
+            title: props.show.title || '',
+            date: props.show.date || '',
+            ticketPrice: props.show.ticketPrice || ''
         };
     };
 
@@ -19,51 +19,37 @@ class AdminShowForm extends Component {
             [name]: value
         });
     };
-    
-    handleFormSubmit = event => {
-        event.preventDefault();
-
-        this.setState({
-            newShowTitle: '',
-            newShowDate: '',
-            newShowPrice: ''
-        });
-
-        console.log(this.state.newShowTitle + ', ' + this.state.newShowDate + ', ' + this.state.newShowPrice)
-
-
-    };
 
     render() {
         return(
             <div>
                 <form>
                     <input className='admin-input'
-                    value={this.state.newShowTitle}
-                    name='newShowTitle'
+                    value={this.state.title}
+                    name='title'
                     onChange={this.handleInputChange}
                     type='text'
                     placeholder='Enter Show Title'
                     />
                     <br />
                     <input className='admin-input'
-                    value={this.state.newShowDate}
-                    name='newShowDate'
+                    value={this.state.date}
+                    name='date'
                     onChange={this.handleInputChange}
                     type='text'
                     placeholder='Enter Show Date'
                     />
                     <br />
                     <input className='admin-input'
-                    value={this.state.newShowPrice}
-                    name='newShowPrice'
+                    value={this.state.ticketPrice}
+                    name='ticketPrice'
                     onChange={this.handleInputChange}
                     type='text'
                     placeholder='Enter Show Price'
                     />
                     <br />
-                    <AdminActionBtn label='Save' type='Show' _id={this.props.shows._id} content={this.state} handleSubmit={this.props.handleSave} />
-                    <AdminActionBtn label='Delete' type='Show' _id={this.props.shows._id} content={this.state} handleSubmit={this.props.handleDelete} />
+                    <AdminActionBtn label='Save' type='Show' _id={this.props.show._id} content={this.state} handleSubmit={this.props.handleSave} />
+                    <AdminActionBtn label='Delete' type='Show' _id={this.props.show._id} content={this.state} handleSubmit={this.props.handleDelete} />
                 </form>
             </div>
         );

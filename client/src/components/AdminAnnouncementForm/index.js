@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import AdminActionBtn from '../AdminActionBtn';
 import './style.css';
 
@@ -7,8 +7,9 @@ class AdminAnnouncementForm extends Component {
         super(props)
 
         this.state = {
-            title: props.announcements.title,
-            description: props.announcements.description
+            _id: props.announcement._id || '',
+            title: props.announcement.title,
+            description: props.announcement.description
         };
     };
 
@@ -24,23 +25,21 @@ class AdminAnnouncementForm extends Component {
             <div>
                 <form>
                     <input className='admin-input'
-                    value={this.state.title}
+                    value={this.props.announcement.title}
                     name='title'
-                    onChange={this.handleInputChange}
+                    onChange={event => this.props.handleChange('Announcement', this.props.index, event)}
                     type='text'
                     placeholder='Enter Announcement Title'
                     />
                     <br />
                     <textarea className='admin-input'
-                    value={this.state.description}
+                    value={this.props.announcement.description}
                     name='description'
-                    onChange={this.handleInputChange}
+                    onChange={event => this.props.handleChange('Announcement', this.props.index, event)}
                     type='text'
                     placeholder='Enter a Description'
                     />
                     <br />
-                    <AdminActionBtn label='Save' type='Announcement' _id={this.props.announcements._id} content={this.state} handleSubmit={this.props.handleSave} />
-                    <AdminActionBtn label='Delete' type='Announcement' _id={this.props.announcements._id} content={this.state} handleSubmit={this.props.handleDelete} />
                 </form>
             </div>
         );

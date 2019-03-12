@@ -7,14 +7,14 @@ class AdminCampForm extends Component {
         super(props)
 
         this.state = {
-            title: props.camps.title,
-            dates: props.camps.dates,
-            description: props.camps.description,
-            tuition: props.camps.tuition,
-            showDate: props.camps.showDate,
-            ticketPrice: props.camps.ticketPrice,
-            extendedDay: props.camps.extendedDay,
-            extendedDayPrice: props.camps.extendedDayPrice
+            title: props.camp.title,
+            dates: props.camp.dates,
+            description: props.camp.description,
+            tuition: props.camp.tuition,
+            showDate: props.camp.showDate,
+            ticketPrice: props.camp.ticketPrice,
+            extendedDay: props.camp.extendedDay,
+            extendedDayPrice: props.camp.extendedDayPrice
         };
     };
 
@@ -24,25 +24,10 @@ class AdminCampForm extends Component {
             [name]: value
         });
     };
-    
-    handleFormSubmit = event => {
-        event.preventDefault();
 
-        this.setState({
-            title: [],
-            dates: [],
-            description: [],
-            tuition: [],
-            showDate: [],
-            ticketPrice: [],
-            extendedDay: false,
-            extendedDayPrice: []
-        });
-
-        console.log(this.state.title + ', ' + this.state.description + ', ' + this.state.dates + ', ' + this.state.tuition + ', ' + this.state.showDate + ', ' + this.state.ticketPrice + ', ' + this.state.extendedDay + ', ' + this.state.extendedDayPrice)
-
-
-    };
+    handleCheck = event => {
+        this.setState({ extendedDay: event.target.checked });
+    }
 
     render() {
         return(
@@ -98,9 +83,9 @@ class AdminCampForm extends Component {
                     <br />
                     <label className='extended-day-label'>Extended Day</label>
                     <input 
-                    value={this.state.extendedDay}
+                    checked={this.state.extendedDay}
                     name='extendedDay'
-                    onChange={this.handleInputChange}
+                    onChange={this.handleCheck}
                     type='checkbox' />
                     <br />
                     <input className='admin-input'
@@ -111,8 +96,8 @@ class AdminCampForm extends Component {
                     placeholder='Camp Extended Day Price'
                     />
                     <br />
-                    <AdminActionBtn label='Save' type='Camp' _id={this.props.camps._id} content={this.state} handleSubmit={this.props.handleSave} />
-                    <AdminActionBtn label='Delete' type='Camp' _id={this.props.camps._id} content={this.state} handleSubmit={this.props.handleDelete} />
+                    <AdminActionBtn label='Save' type='Camp' _id={this.props.camp._id} content={this.state} handleSubmit={this.props.handleSave} />
+                    <AdminActionBtn label='Delete' type='Camp' _id={this.props.camp._id} content={this.state} handleSubmit={this.props.handleDelete} />
                 </form>
             </div>
         );

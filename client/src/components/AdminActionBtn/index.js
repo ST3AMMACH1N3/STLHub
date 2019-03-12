@@ -6,7 +6,7 @@ function AdminActionBtn(props) {
         <button 
             onClick={event => {
                 event.preventDefault();
-                props.handleSubmit(props.type, props._id, props.content);
+                props.handleSubmit(props.type, props.index);
             }}>
             {props.label}
         </button>
