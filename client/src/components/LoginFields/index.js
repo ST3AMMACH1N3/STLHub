@@ -8,7 +8,7 @@ class LoginFields extends Component {
         super(props)
         this.state = {
             email: '',
-            password: ''
+            password: '',
         };
     };
 
@@ -27,7 +27,8 @@ class LoginFields extends Component {
                 this.props.handleLogin();
                 window.location.href = '/';
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
+            
         this.setState({
             email: '',
             password: ''

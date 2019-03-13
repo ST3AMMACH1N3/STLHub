@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import API from '../../utils/API';
 import './style.css';
 
 class RegisterFields extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            Name: '',
-            Email: '',
-            Password: ''
+            name: '',
+            email: '',
+            password: ''
         };
     };
 
@@ -22,10 +23,17 @@ class RegisterFields extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
 
+        API
+            .createAccount(this.state)
+            .then(response => {
+                window.location.href = '/login';
+            })
+            .catch(err => console.log(err));
+
         this.setState({
-            Name: '',
-            Email: '',
-            Password: ''
+            name: '',
+            email: '',
+            password: ''
         });
     };
 

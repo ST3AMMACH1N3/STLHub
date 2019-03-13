@@ -37,7 +37,7 @@ router
             .then(data => {
                 if (data) {
                     console.log('User not created');
-                    res.send('User with email already exists.');
+                    res.status(400).send('User with email already exists.');
                     return;
                 }
                 return db.User.create(req.body);
