@@ -29,7 +29,6 @@ class Admin extends Component {
 
     componentDidMount = () => {
         API.getContent().then(content => {
-            console.log(content);
             this.setState({
                 images: content.data.images,
                 shows: content.data.shows,
@@ -74,7 +73,6 @@ class Admin extends Component {
         let item = this.state[category][index];
         if (item._id) {
             let func = `delete${type === 'Show' ? 'Show': 'Content'}`;
-            console.log(type);
             API[func]({ type, _id: item._id })
                 .then(response => console.log(response))
                 .catch(err => console.log(err));
@@ -90,7 +88,6 @@ class Admin extends Component {
         let category = type.toLowerCase() + 's';
         let content = this.state[category].slice(index, index + 1)[0];
         let func = (content._id ? 'edit' : 'create') + (type === 'Show' ? 'Show' : 'Content');
-        console.log(content);
         if (content.date) {
             content.date = new Date(content.date);
             if (JSON.stringify(content.date) === 'Invalid Date') {
@@ -99,10 +96,7 @@ class Admin extends Component {
             }
         }
         API[func]({ type, content })
-            .then(res => {
-                
-                console.log(res)
-            })
+            .then(res => console.log(res))
             .catch(err => console.log(err));
     }
 

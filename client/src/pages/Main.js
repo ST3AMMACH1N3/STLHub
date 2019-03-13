@@ -29,7 +29,6 @@ class Main extends Component {
 
     componentDidMount = () => {
         API.getContent().then(content => {
-            console.log(content);
             if (content.data.shows.length < 1) {
                 return;
             }
