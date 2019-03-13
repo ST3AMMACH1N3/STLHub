@@ -22,7 +22,7 @@ function Header(props) {
                 {/* <!-- Links --> */}
                 <ul className='navbar-nav mr-auto'>
                     <li className='nav-item active' data-toggle="collapse" data-target=".navbar-collapse">
-                        <a className='nav-link' href='/#Header' >Home <span className='sr-only'>(current)</span></a>
+                        <Link className='nav-link' to='/'>Home <span className='sr-only'>(current)</span></Link>
                     </li>
                     <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
                         {props.credentials ? <a className='nav-link' href='/#header' onClick={props.handleLogout}>Log Out</a> : <Link className='nav-link' to='/login'>Log In</Link> }
