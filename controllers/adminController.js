@@ -62,7 +62,7 @@ module.exports = {
 
     createShow: function(req, res) {
         showController
-            .create(req.body.content.title, req.body.content.date, req.body.content.price)
+            .create(req.body.title, req.body.date, req.body.price)
             .then(show => {
                 return showController.addSeats(show.title, show.date);
             })
