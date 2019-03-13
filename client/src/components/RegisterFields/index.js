@@ -32,9 +32,9 @@ class RegisterFields extends Component {
     render() {
         return (
             <div className='registerFields' id='registerFields'>
-                <h1>Register</h1>
+                <h1 className='registerTitle'>Register</h1>
                 <form>
-                <input 
+                <input className='registerName'
                         value={this.state.name}
                         name='name'
                         onChange={this.handleInputChange}
@@ -42,7 +42,7 @@ class RegisterFields extends Component {
                         placeholder='Name'
                     />
                     <br />
-                    <input 
+                    <input className='registerEmail'
                         value={this.state.email}
                         name='email'
                         onChange={this.handleInputChange}
@@ -50,7 +50,7 @@ class RegisterFields extends Component {
                         placeholder='Email'
                     />
                     <br />
-                    <input 
+                    <input className='registerPassword'
                         value={this.state.password}
                         name='password'
                         onChange={this.handleInputChange}
@@ -58,10 +58,10 @@ class RegisterFields extends Component {
                         placeholder='Password'
                     />
                     <br />
-                    <button onClick={this.handleFormSubmit}>Register</button>
+                    <button className='registerBtn' onClick={this.handleFormSubmit}>Register</button>
 
                 </form>
-                <Link to='/login'>Log In</Link>
+                <Link className='loginLink' to='/login'>Log In</Link>
             </div>
         );
     };

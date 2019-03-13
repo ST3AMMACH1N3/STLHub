@@ -10,4 +10,7 @@
 
 #directions {
     color: #ff3333;
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: block;
 }

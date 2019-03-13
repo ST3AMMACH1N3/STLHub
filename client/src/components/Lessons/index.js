@@ -7,10 +7,10 @@ class Lessons extends Component {
         super(props)
         this.state = {
             messageSent: false,
-            Name:'',
-            Email:'',
-            Phone:'',
-            Message:''
+            name:'',
+            email:'',
+            phone:'',
+            message:''
         };
     };
 
@@ -41,7 +41,7 @@ class Lessons extends Component {
                 <p>Please contact us for availability and scheduling.</p>
                 <form>
                     <input 
-                        className='lessons-field'
+                        className='lessons-field lessons-name'
                         value={this.state.name}
                         name='name'
                         onChange={this.handleInputChange}
@@ -50,7 +50,7 @@ class Lessons extends Component {
                     />
                     <br />
                     <input 
-                        className='lessons-field'
+                        className='lessons-field lessons-email'
                         value={this.state.email}
                         name='email'
                         onChange={this.handleInputChange}
@@ -59,7 +59,7 @@ class Lessons extends Component {
                     />
                     <br />
                     <input 
-                        className='lessons-field'
+                        className='lessons-field lessons-phone'
                         value={this.state.phone}
                         name='phone'
                         onChange={this.handleInputChange}
@@ -76,7 +76,7 @@ class Lessons extends Component {
                         placeholder='Message'
                     />
                     <br />
-                    <button onClick={this.handleFormSubmit}>Send</button>
+                    <button className='lessons-send' onClick={this.handleFormSubmit}>Send</button>
                 </form>
             </div>
         );

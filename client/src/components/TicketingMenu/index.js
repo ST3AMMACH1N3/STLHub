@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SeatingMap from '../SeatingMap';
 import API from '../../utils/API';
+import './style.css';
 
 class TicketingMenu extends Component {
     constructor(props) {
