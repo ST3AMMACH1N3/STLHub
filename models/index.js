@@ -5,5 +5,6 @@ module.exports = {
     Camp: require('./camp'),
     Survivor: require('./survivor'),
     Announcement: require('./announcement'),
-    User: require('./user')
+    User: require('./user'),
+    Image: require('./image')
 };

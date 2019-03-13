@@ -3,17 +3,18 @@ const db = require('../models');
 const site = {
     announcements: [],
     camps: [],
+    images: [],
     shows: [],
     survivors: [],
     reservations: [],
 
     getMain: function() {
-        let { announcements, camps, shows, survivors } = this;
+        let { announcements, camps, images, shows, survivors } = this;
         shows = shows.map(show => {
             delete show.reservations;
             return show;
         });
-        return { announcements, camps, shows, survivors };
+        return { announcements, camps, images, shows, survivors };
     },
 
     getShows: function() {
@@ -55,6 +56,14 @@ const site = {
                     console.log(JSON.stringify(this, null, 2));
                 } else {
                     console.log('Survivors Failed to Load!');
+                }
+                return db.Image.find();
+            })
+            .then(dbImages => {
+                if (dbImages) {
+                    this.images = dbImages;
+                } else {
+                    console.log('Images Failed to Load!');
                 }
             })
             .catch(err => console.log(err));

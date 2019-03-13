@@ -31,6 +31,7 @@ class Admin extends Component {
         API.getContent().then(content => {
             console.log(content);
             this.setState({
+                images: content.data.images,
                 shows: content.data.shows,
                 survivors: content.data.survivors,
                 camps: content.data.camps,
@@ -108,35 +109,6 @@ class Admin extends Component {
     showPage = () => {
         return (
             <div>
-                {/* <AdminPictureTitle />
-                {this.state.images.map((image, index) =>{
-                    return (<div>
-                                <AdminPictureForm key={`image${index}`} index={index} image={image} />
-                                <AdminActionBtn key={`imageSave${index}`} handleSubmit={this.handleSave}  type='Image' index={index} />
-                                <AdminActionBtn key={`imageDelete${index}`} handleSubmit={this.handleDelete} type='Image' index={index} />
-                            </div>)
-                })}
-                <AdminAddBtn label='Image' handleSubmit={this.handleAddForm}/>
-                <AdminShowTitle />
-                {this.state.shows.map((show, index) =>{
-                    return <AdminShowForm key={`show${index}`} index={index} show={show} handleSave={this.handleSave} handleDelete={this.handleDelete} />
-                })}
-                <AdminAddBtn label='Show' handleSubmit={this.handleAddForm}/>
-                <AdminSurvivorTitle />
-                {this.state.survivors.map((survivor, index) =>{
-                    return <AdminSurvivorForm key={`survivor${index}`} index={index} survivor={survivor} handleSave={this.handleSave} handleDelete={this.handleDelete} />
-                })}
-                <AdminAddBtn label='Survivor' handleSubmit={this.handleAddForm}/>
-                <AdminCampTitle />
-                {this.state.camps.map((camp, index) =>{
-                    return <AdminCampForm key={`camp${index}`} index={index} camp={camp} handleSave={this.handleSave} handleDelete={this.handleDelete} />
-                })}
-                <AdminAddBtn label='Camp' handleSubmit={this.handleAddForm}/>
-                <AdminAnnouncementTitle />
-                {this.state.announcements.map((announcement, index) =>{
-                    return <AdminAnnouncementForm key={`announcement${index}`} index={index} announcement={announcement} handleChange={this.handleChange} handleSave={this.handleSave} handleDelete={this.handleDelete} />
-                })}
-                <AdminAddBtn label='Announcement' handleSubmit={this.handleAddForm}/> */}
                 <AdminPictureTitle />
                 {this.state.images.map((image, index) =>{
                     return (<div>

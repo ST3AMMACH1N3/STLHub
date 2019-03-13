@@ -4,7 +4,6 @@ import './style.css';
 function AdminPictureForm(props) {
     return (
         <div>
-            <h4>Add an Image:</h4>
             <form>
                 <input className='admin-input'
                 value={props.image.url}

@@ -12,15 +12,7 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            images: [{
-                src: 'https://static.wixstatic.com/media/3c9dac_57b02779cd1a46a2823267f2c9008956~mv2_d_2048_1366_s_2.jpg/v1/fill/w_980,h_620,al_c,q_85,usm_0.66_1.00_0.01/3c9dac_57b02779cd1a46a2823267f2c9008956~mv2_d_2048_1366_s_2.webp'
-            },
-            {
-                src: 'https://static.wixstatic.com/media/3c9dac_499325623dda49b7b93d469c1d9b2d04~mv2.jpg/v1/fill/w_960,h_607,al_c,q_85/3c9dac_499325623dda49b7b93d469c1d9b2d04~mv2.webp'
-            },
-            {
-                src: 'https://static.wixstatic.com/media/3c9dac_19d5a038c4db4b8986c253f99960d69c~mv2.jpg/v1/fill/w_764,h_483,al_c,q_85/3c9dac_19d5a038c4db4b8986c253f99960d69c~mv2.webp'
-            }],
+            images: [],
             camps: [],
             currentShow: {
                 title: '',
@@ -51,7 +43,6 @@ class Main extends Component {
                     nearestDate = showDate - today;
                 }
             })
-
             
             let shows = [{}];
             let showDates = [];
@@ -70,6 +61,7 @@ class Main extends Component {
                 return camp
             })
             this.setState({
+                images: content.data.images || [],
                 currentShow: {
                     title: shows[0].title || 'No Announced Shows',
                     dates: showDates
