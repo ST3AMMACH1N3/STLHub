@@ -100,20 +100,22 @@ class TicketingMenu extends Component {
         return (
             <div className='ticketing'>
                 <h1 className='ticketingTitle'>{this.state.selectedTitle || 'Select A Show'}</h1>
-                <select onChange={event => this.handleShowSelection(event.target.value)} value={this.state.selectedTitle || 'Please Select a Show'}>
-                    <option disabled>Please Select a Show</option>
-                    {this.state.shows.map(show => {
-                        return <option key={show.title} value={show.title}>{show.title}</option>;
-                    })}
-                </select>
-                {(show.dates.length) ? 
-                <select onChange={event => this.handleDateSelection(event.target.value)} test={console.log(this.state.selectedShow)} value={typeof this.state.selectedShow === 'object' ? this.state.selectedShow.date : 'Please Select a Date'}>
-                    <option disabled>Please Select a Date</option>
-                    {show.dates.map(date => {
-                        return <option key={date} value={date}>{date}</option>
-                    })}
-                </select>
-                : '' }
+                <div className='ticketingDrop'>
+                    <select onChange={event => this.handleShowSelection(event.target.value)} value={this.state.selectedTitle || 'Please Select a Show'}>
+                        <option disabled>Please Select a Show</option>
+                        {this.state.shows.map(show => {
+                            return <option key={show.title} value={show.title}>{show.title}</option>;
+                        })}
+                    </select>
+                    {(show.dates.length) ? 
+                    <select onChange={event => this.handleDateSelection(event.target.value)} test={console.log(this.state.selectedShow)} value={typeof this.state.selectedShow === 'object' ? this.state.selectedShow.date : 'Please Select a Date'}>
+                        <option disabled>Please Select a Date</option>
+                        {show.dates.map(date => {
+                            return <option key={date} value={date}>{date}</option>
+                        })}
+                    </select>
+                    : '' }
+                </div>
                 {this.state.selectedShow ? <SeatingMap key={this.state.selectedShow.date} seats={this.state.selectedShow.seats} loggedIn={(this.props.credentials)} handleReserve={this.handleReserve}/> : ''}
             </div>
         );
