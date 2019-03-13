@@ -3,7 +3,7 @@ import './style.css';
 
 function AdminSurvivorTitle() {
     return(
-        <h4>Edit Survivor</h4>
+        <h4 className='admin-title'>Edit Survivor</h4>
     );
 };
 

@@ -3,7 +3,7 @@ import './style.css';
 
 function AdminPictureTitle() {
     return(
-        <h4>Edit Pictures</h4>
+        <h4 className='admin-title'>Edit Pictures</h4>
     );
 };
 

@@ -5,7 +5,7 @@
 }
 
 .seatMap {
-    margin: 20px auto;
+    margin: 0px auto;
     text-align: center;
 }
 
@@ -13,4 +13,9 @@
     position: absolute;
     border: 1px solid #fff;
     writing-mode: vertical-lr;
+}
+#reserveBtn {
+    margin-top: 440px;
+    margin-left: 30%;
+    margin-bottom: 10px;
 }
