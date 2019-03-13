@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Seat from '../Seat';
-import API from '../../utils/API';
 import './style.css';
 
 class SeatingMap extends Component {

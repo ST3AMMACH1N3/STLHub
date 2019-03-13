@@ -3,10 +3,6 @@ import SurvivorForm from '../SurvivorForm'
 import './style.css';
 
 class SurvivorInfo extends Component {
-    constructor(props) {
-        super(props)
-        
-    };
 
     render() {
         return (

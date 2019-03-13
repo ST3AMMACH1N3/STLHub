@@ -4,8 +4,6 @@ import './style.css';
 // import MainCarouselImage from '../MainCarouselImage';
 
 function MainImageCarousel(props) {
-  console.log(props);
-
   var settings = {
     dots: true,
     infinite: true,
@@ -20,7 +18,7 @@ function MainImageCarousel(props) {
     <div className='container'>
       <Slider {...settings}>
         {props.images.map((image) => {
-          return <img className='carouselImg' src={image.url} alt={image.alt}/>
+          return <img className='carouselImg' key={image.url} src={image.url} alt={image.alt}/>
         })}
       </Slider>
     </div>
