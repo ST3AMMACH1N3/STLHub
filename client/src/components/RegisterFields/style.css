@@ -1,0 +1,19 @@
+.registerFields {
+    text-align: center;
+}
+.registerTitle {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.registerName {
+    margin-bottom: 5px;
+}
+.registerEmail {
+    margin-bottom: 5px;
+}
+.registerPassword {
+    margin-bottom: 5px;
+}
+.loginLink {
+    color: #ff3333;
+}

@@ -1,0 +1,9 @@
+.card {
+    background: black;
+}
+.btn, .btn-link:hover {
+    color: white;
+}
+.btn {
+    text-decoration-line: underline;
+}

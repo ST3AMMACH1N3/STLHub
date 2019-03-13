@@ -37,9 +37,9 @@ class LoginFields extends Component {
     render() {
         return (
             <div className='loginFields' id='loginFields'>
-                <h1>Log In</h1>
-                <form>
-                    <input 
+                <h1 className='loginTitle'>Log In</h1>
+                <form className='loginForm'>
+                    <input className='loginEmail'
                         value={this.state.email}
                         name='email'
                         onChange={this.handleInputChange}
@@ -47,7 +47,7 @@ class LoginFields extends Component {
                         placeholder='Email'
                     />
                     <br />
-                    <input 
+                    <input className='loginPassword'
                         value={this.state.password}
                         name='password'
                         onChange={this.handleInputChange}
@@ -55,10 +55,10 @@ class LoginFields extends Component {
                         placeholder='Password'
                     />
                     <br />
-                    <button onClick={this.handleFormSubmit}>Log In</button>
+                    <button className='loginBtn' onClick={this.handleFormSubmit}>Log In</button>
 
                 </form>
-                <Link to='/register'>Register</Link>
+                <Link className='registerLink' to='/register'>Register</Link>
             </div>
         );
     };

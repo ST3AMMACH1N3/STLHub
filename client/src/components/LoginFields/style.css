@@ -1,0 +1,16 @@
+.loginFields {
+    text-align: center;
+}
+.loginTitle {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.loginEmail {
+    margin-bottom: 5px;
+}
+.loginPassword {
+    margin-bottom: 5px;
+}
+.registerLink {
+    color: #ff3333;
+}
