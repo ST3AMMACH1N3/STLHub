@@ -6,9 +6,9 @@ module.exports = {
         return db.Reservation.findByIdAndUpdate(resId, { $addToSet: { seats: seatId } });
     },
 
-    create: function(reservationHolder, seats) {
+    create: function(show, holder, seats) {
         return db.Reservation
-                    .create({ reservationHolder, seats })
+                    .create({ show, reservationHolder, seats })
                     .then(reservation => {
                         seatController
                             .changeStatus(seats, 'reserved')

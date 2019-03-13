@@ -8,6 +8,11 @@ const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/STLHub");
+
+const siteObj = require('./controllers/siteObj');
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -22,9 +27,6 @@ app.use(passport.session());
 
 // Add routes, both API and view
 app.use(routes);
-
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/STLHub");
 
 // Start the API server
 app.listen(PORT, function() {

@@ -1,10 +1,9 @@
 import React from 'react';
 import Slider from 'react-slick';
 import './style.css';
-import MainCarouselImage from '../MainCarouselImage';
+// import MainCarouselImage from '../MainCarouselImage';
 
 function MainImageCarousel(props) {
-
   var settings = {
     dots: true,
     infinite: true,
@@ -19,7 +18,7 @@ function MainImageCarousel(props) {
     <div className='container'>
       <Slider {...settings}>
         {props.images.map((image) => {
-          return <MainCarouselImage key={image.src} src={image.src} />
+          return <img className='carouselImg' key={image.url} src={image.url} alt={image.alt}/>
         })}
       </Slider>
     </div>

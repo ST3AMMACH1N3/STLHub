@@ -1,3 +1,16 @@
-.seatMap {
+.innerMap {
     position: relative;
+    display: inline-block;
+    left: -64px;
+}
+
+.seatMap {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.soundTable {
+    position: absolute;
+    border: 1px solid #fff;
+    writing-mode: vertical-lr;
 }

@@ -1,16 +1,16 @@
 import React from 'react';
 import './style.css';
 
-function AdminAddBtn(props) {
+function AdminActionBtn(props) {
     return(
         <button 
             onClick={event => {
                 event.preventDefault();
-                props.handleSubmit(props.label);
+                props.handleSubmit(props.type, props.index);
             }}>
-            Add {props.label}
+            {props.label}
         </button>
     )
 }
 
-export default AdminAddBtn;
+export default AdminActionBtn;
