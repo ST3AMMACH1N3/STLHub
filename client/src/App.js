@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import Main from './pages/Main';
 import Ticketing from './pages/Ticketing';
 import Admin from './pages/Admin';
@@ -30,9 +30,8 @@ class App extends Component {
         API
             .getCredentials()
             .then(response => {
-                console.log(response);
                 if (response.data.name) {
-                    this.setState({ credentials: response.data }, (err, newState) => console.log(newState));
+                    this.setState({ credentials: response.data });
                 }
             })
             .catch(err => console.log(err));
@@ -63,7 +62,7 @@ class App extends Component {
                         {/* <Route exact path='/thankyou' component={Thankyou} /> */}
                         <Route component={NoMatch}/>
                     </Switch>
-                    <Footer />
+                    {/* <Footer /> */}
                 </div>
             </Router>
         );

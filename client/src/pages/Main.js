@@ -24,7 +24,7 @@ class Main extends Component {
             camps: [],
             currentShow: {
                 title: '',
-                date: ''
+                dates: []
             },
             survivor: {
                 theme: '',
@@ -41,18 +41,38 @@ class Main extends Component {
             if (content.data.shows.length < 1) {
                 return;
             }
-            let dateObj = new Date(content.data.shows[0].date)
-            let dateArray = dateObj.toString().split(' ')
-            let hours = dateObj.getHours() > 12 ? dateObj.getHours() - 12 : dateObj.getHours()
-            let minutes = dateObj.getMinutes() < 10 ? '0' + dateObj.getMinutes() : dateObj.getMinutes();
+            let currentShow;
+            let nearestDate = Infinity;
+            let today = Date.now();
+            content.data.shows.forEach(show => {
+                let showDate = new Date(show.date);
+                if (showDate - today < nearestDate && showDate - today > 1) {
+                    currentShow = show;
+                    nearestDate = showDate - today;
+                }
+            })
+
+            
+            let shows = [{}];
+            let showDates = [];
+            if (currentShow) {
+                shows = content.data.shows.filter(show => show.title === currentShow.title);
+                showDates = shows.map(show => {
+                    let date = new Date(show.date);
+                    let options = { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' };
+                    let readable = Intl.DateTimeFormat('en-US', options).format(date);
+                    return readable;
+                });
+            }
+
             let camps = content.data.camps.map(camp => {
                 camp.tuition = (parseInt(camp.tuition) / 100).toFixed(2)
                 return camp
             })
             this.setState({
                 currentShow: {
-                    title: content.data.shows[0].title,
-                    date: `${dateArray[0]} ${dateArray[1]} ${dateArray[2]} @ ${hours}:${minutes}`
+                    title: shows[0].title || 'No Announced Shows',
+                    dates: showDates
                 },
                 survivor: {
                     theme: content.data.survivors[0].title,
@@ -64,6 +84,7 @@ class Main extends Component {
             })
         });
     }
+
     render() {
         return (
             <div>

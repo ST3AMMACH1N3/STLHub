@@ -97,7 +97,7 @@ class SeatingMap extends Component {
                         </div>
                     </div>
                 </div>
-                <button id='reserveBtn' onClick={() => this.props.handleReserve(this.state.modified)}>Reserve Seats</button>
+                {this.props.loggedIn ? <button id='reserveBtn' onClick={() => this.props.handleReserve(this.state.modified)}>Reserve Seats</button> : ''}
             </div>
             
         );

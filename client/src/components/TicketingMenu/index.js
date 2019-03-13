@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import SeatingMap from '../SeatingMap';
-import TicketingBtn from '../TicketingBtn';
 import API from '../../utils/API';
 
 class TicketingMenu extends Component {
@@ -20,17 +19,20 @@ class TicketingMenu extends Component {
         API
             .getShows()
             .then(response => {
-                // let shows = [{ title: 'Xanadu', dates: [Date.now()] }]; //For testing the date drop down since there is only one show;
                 let shows = [];
                 let showData = [];
                 response.data.forEach(showObj => {
+                    let date = new Date(showObj.date);
+                    let options = { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' };
+                    let readable = Intl.DateTimeFormat('en-US', options).format(date);
+                    showObj.date = readable;
+                    showData.push(showObj);
                     let sameTitle = shows.findIndex(show => show.title === showObj.title);
                     if (sameTitle !== -1) {
                         shows[sameTitle].dates.push(showObj.date);
                         return
                     }
                     shows.push({ title: showObj.title, dates: [showObj.date] });
-                    showData.push(showObj);
                 });
                 this.setState({ shows, showData }, () => {
                     this.handleShowSelection(this.props.title);
@@ -54,6 +56,11 @@ class TicketingMenu extends Component {
             return (show.title === this.state.selectedTitle && date - selectedDate === 0);
         });
 
+        if (!selectedShow) {
+            console.log('Show not found');
+            return;
+        }
+
         let reservation = '';
         if (this.state.reservations.length > 0) {
             reservation = this.state.reservations.find(reservation => reservation.show === selectedShow._id);
@@ -75,13 +82,11 @@ class TicketingMenu extends Component {
     handleShowSelection = value => {
         let selectedShow = this.state.shows.find(show => show.title === value);
         if (selectedShow) {
-            this.setState({ selectedTitle: selectedShow.title });
+            this.setState({ selectedTitle: selectedShow.title, selectedShow: '', reservation: '' });
         }
     }
 
     handleReserve = modifiedSeats => {
-        console.log(modifiedSeats);
-        console.log(this.state.reservation);
         if (this.state.reservation) {
             API.editReservation({ show: this.state.selectedShow._id, reservation: this.state.reservation._id, seats: modifiedSeats });
             return;
@@ -101,17 +106,14 @@ class TicketingMenu extends Component {
                     })}
                 </select>
                 {(show.dates.length) ? 
-                <select onChange={event => this.handleDateSelection(event.target.value)} defaultValue='Please Select a Date'>
+                <select onChange={event => this.handleDateSelection(event.target.value)} test={console.log(this.state.selectedShow)} value={typeof this.state.selectedShow === 'object' ? this.state.selectedShow.date : 'Please Select a Date'}>
                     <option disabled>Please Select a Date</option>
                     {show.dates.map(date => {
-                        date = new Date(date);
-                        let options = { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' };
-                        let readable = Intl.DateTimeFormat('en-US', options).format(date);
-                        return <option key={date} value={date}>{readable}</option>
+                        return <option key={date} value={date}>{date}</option>
                     })}
                 </select>
                 : '' }
-                {this.state.selectedShow ? <SeatingMap seats={this.state.selectedShow.seats} loggedIn={(this.props.credentials)} handleReserve={this.handleReserve}/> : ''}
+                {this.state.selectedShow ? <SeatingMap key={this.state.selectedShow.date} seats={this.state.selectedShow.seats} loggedIn={(this.props.credentials)} handleReserve={this.handleReserve}/> : ''}
             </div>
         );
     };
