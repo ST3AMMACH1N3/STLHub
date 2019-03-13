@@ -31,9 +31,9 @@ class RegisterFields extends Component {
             .catch(err => console.log(err));
 
         this.setState({
-            Name: '',
-            Email: '',
-            Password: ''
+            name: '',
+            email: '',
+            password: ''
         });
     };
 
