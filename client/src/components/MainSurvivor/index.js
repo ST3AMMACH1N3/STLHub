@@ -1,7 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './style.css';
 
-function Survivor(props) {
+function MainSurvivor(props) {
     let {theme, dates, tuition} = props.survivor;
     return (
         <div className='mainSurvivor' id='survivor'>
@@ -10,9 +11,9 @@ function Survivor(props) {
             <h2>{dates}</h2>
             <h2>{tuition}</h2>
             <h2>Outwit, Outplay, Outlast.</h2>
-            <button>Reserve Your Spot!</button>
+            <Link to={{ pathname: '/survivor' }}><button>Reserve Your Spot!</button></Link>
         </div>
     );
 };
 
-export default Survivor;
+export default MainSurvivor;

@@ -1,0 +1,17 @@
+.season-card {
+    float: left;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.card-logo {
+    height: auto;
+    width: 45%;
+    overflow: auto;
+    float: left;
+}
+.card-theme, .card-season, .card-final, .card-winner {
+    overflow: auto;
+    margin: 0% 0% 0% 50%;
+    width: 50%;
+}

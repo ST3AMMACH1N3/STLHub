@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SeatingMap from '../SeatingMap';
 import TicketingBtn from '../TicketingBtn';
 import API from '../../utils/API';
+import './style.css';
 
 class TicketingMenu extends Component {
     constructor(props) {
@@ -60,24 +61,26 @@ class TicketingMenu extends Component {
         return (
             <div className='ticketing'>
                 <h1 className='ticketingTitle'>{this.state.selectedTitle || 'Select A Show'}</h1>
-                <select onChange={event => this.handleShowSelection(event.target.value)} value={this.state.selectedTitle || 'Please Select a Show'}>
-                    <option disabled>Please Select a Show</option>
-                    {this.state.shows.map(show => {
-                        return <option key={show.title} value={show.title}>{show.title}</option>;
-                    })}
-                </select>
-                {(show.dates.length) ? 
-                <select onChange={event => this.handleDateSelection(event.target.value)} defaultValue='Please Select a Date'>
-                    <option disabled>Please Select a Date</option>
-                    {show.dates.map(date => {
-                        date = new Date(date);
-                        let options = { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' };
-                        let readable = Intl.DateTimeFormat('en-US', options).format(date);
-                        return <option key={date} value={date}>{readable}</option>
-                    })}
-                </select>
-                : '' }
-                {this.state.selectedShow ? <SeatingMap seats={this.state.selectedShow.seats} /> : <h1>Not here</h1>}
+                <div className='ticketingDrop'>
+                    <select onChange={event => this.handleShowSelection(event.target.value)} value={this.state.selectedTitle || 'Please Select a Show'}>
+                        <option disabled>Please Select a Show</option>
+                        {this.state.shows.map(show => {
+                            return <option key={show.title} value={show.title}>{show.title}</option>;
+                        })}
+                    </select>
+                    {(show.dates.length) ? 
+                    <select onChange={event => this.handleDateSelection(event.target.value)} defaultValue='Please Select a Date'>
+                        <option disabled>Please Select a Date</option>
+                        {show.dates.map(date => {
+                            date = new Date(date);
+                            let options = { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' };
+                            let readable = Intl.DateTimeFormat('en-US', options).format(date);
+                            return <option key={date} value={date}>{readable}</option>
+                        })}
+                    </select>
+                    : '' }
+                </div>
+                {this.state.selectedShow ? <SeatingMap seats={this.state.selectedShow.seats} /> : ''}
                 <TicketingBtn />
             </div>
         );
