@@ -3,7 +3,7 @@ import './style.css';
 
 function AdminAnnouncementTitle() {
     return(
-        <h4>Edit Announcements</h4>
+        <h4 className='admin-title'>Edit Announcements</h4>
     );
 };
 

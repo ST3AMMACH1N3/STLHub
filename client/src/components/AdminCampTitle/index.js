@@ -3,7 +3,7 @@ import './style.css';
 
 function AdminCampTitle() {
     return(
-        <h4>Edit Camps</h4>
+        <h4 className='admin-title'>Edit Camps</h4>
     );
 };
 

@@ -3,13 +3,15 @@ import './style.css';
 
 function AdminActionBtn(props) {
     return(
-        <button 
-            onClick={event => {
-                event.preventDefault();
-                props.handleSubmit(props.type, props.index);
-            }}>
-            {props.label}
-        </button>
+        <div className='admin-action'>
+            <button 
+                onClick={event => {
+                    event.preventDefault();
+                    props.handleSubmit(props.type, props.index);
+                }}>
+                {props.label}
+            </button>
+        </div>
     )
 }
 
