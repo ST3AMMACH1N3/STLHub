@@ -1,3 +1,40 @@
 .admin-input {
-    width: 60%;
+    width: 100%;
+}
+
+.form-section {
+    max-width: 960px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0px auto;
+}
+
+.picture-section {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-bottom: 30px solid #8800aa;
+}
+
+.announcement-section {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-bottom: 30px solid #00ff00;
+}
+
+.show-section {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-bottom: 30px solid #0022ff;
+}
+
+.survivor-section {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-bottom: 30px solid #00ffdd;
+}
+
+.camp-section {
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
