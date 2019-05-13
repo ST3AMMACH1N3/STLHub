@@ -1,4 +1,6 @@
 import React from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import './style.css';
 
 function AdminShowForm(props) {
@@ -12,15 +14,18 @@ function AdminShowForm(props) {
                 type='text'
                 placeholder='Enter Show Title'
                 />
-                <br />
-                <input className='admin-input'
-                value={props.show.date}
-                name='date'
-                onChange={event => props.handleChange('Show', props.index, event)}
-                type='text'
-                placeholder='Enter Show Date'
+                <DatePicker
+                    className='admin-input'
+                    selected={props.show.date ? new Date(props.show.date) : null}
+                    showTimeSelect
+                    timeFormat="h:mmaa"
+                    timeIntervals={15}
+                    dateFormat="MMMM d, yyyy h:mm aa"
+                    timeCaption="time"
+                    name='date'
+                    placeholderText='Select a Show Date'
+                    onChange={date => props.handleChange('Show', props.index, { target: { name: 'date', value: date } })}
                 />
-                <br />
                 <input className='admin-input'
                 value={props.show.ticketPrice}
                 name='ticketPrice'

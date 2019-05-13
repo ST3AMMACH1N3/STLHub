@@ -2,12 +2,12 @@ body {
   background: #000000;
   color: #ffffff;
 }
-.container {
+/* .container {
   margin: 0 auto;
   padding: 0px;
   width: 100%;
   background: #00000000;
-}
+} */
 .slick-slider {
   margin: 30px auto 50px;
 }

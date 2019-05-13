@@ -1,3 +1,16 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 1em;
+}
+
 .fa-1x {
     font-size: 1.5rem;
 }
@@ -10,4 +23,11 @@
 }
 .navbar-brand {
     font-weight: 900;
+}
+
+.mainSection {
+    border-bottom-width: 30px;
+    border-bottom-style: solid;
+    padding-bottom: 10vh;
+    text-align: center;
 }

@@ -33,13 +33,15 @@ class About extends Component {
 
     render(){
         return(
-            <div>
+            <div className='container'>
                 <AboutTitle />
                 <AboutMission />
-                <AboutStaffCard staff={this.state.skye} side='about-left' />
-                <AboutStaffCard staff={this.state.giana} side='about-right' />
-                <AboutStaffCard staff={this.state.aria} side='about-left' />
-                <AboutStaffCard staff={this.state.caroline} side='about-right' />
+                <div className='staff-section'>
+                    <AboutStaffCard staff={this.state.skye} side='about-left' />
+                    <AboutStaffCard staff={this.state.giana} side='about-right' />
+                    <AboutStaffCard staff={this.state.aria} side='about-left' />
+                    <AboutStaffCard staff={this.state.caroline} side='about-right' />
+                </div>
             </div>
         );
     };

@@ -1,7 +1,9 @@
-.mainLessons {
-    text-align: center;
-    border-bottom: 30px solid #00ffdd;
-    padding: 10% 5% 10% 5%;
+#mainLessons {
+    /* text-align: center; */
+    /* border-bottom: 30px solid #00ffdd; */
+    /* padding: 10% 5% 10% 5%; */
+    /* padding-bottom: 5vh; */
+    border-color: #00ffdd
 }
 .lessons-message, .lessons-field {
     width: 90%;

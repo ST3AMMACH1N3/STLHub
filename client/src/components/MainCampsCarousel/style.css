@@ -1,6 +1,7 @@
-.mainSummerCamps {
-  text-align: center;
-  border-bottom: 30px solid #0022ff;
-  padding-top: 10%;
-  padding-bottom: 10%;
+#mainCamps {
+  /* text-align: center; */
+  /* border-bottom: 30px solid #0022ff; */
+  /* padding-top: 10%; */
+  /* padding-bottom: 5vh; */
+  border-color: #0022ff;
 }

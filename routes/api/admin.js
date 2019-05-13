@@ -45,7 +45,7 @@ router
     })
     .put((req, res) => {
         db.Show
-            .findByIdAndUpdate(req.body.content._id, req.body.content, { new: true })
+            .findByIdAndUpdate(req.body.content._id, req.body.content, { new: true, runValidators: true })
             .then(dbShow => {
                 return db.Show.findById(req.body.content._id).populate('reservations').populate('seats');
             })

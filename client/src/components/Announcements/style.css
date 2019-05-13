@@ -1,5 +1,6 @@
-.announcements {
-    text-align: center;
-    border-bottom: 30px solid orangered;
-    padding-bottom: 10%;
+#announcements {
+    /* text-align: center; */
+    /* border-bottom: 30px solid orangered; */
+    /* padding-bottom: 5vh; */
+    border-color: orangered;
 }

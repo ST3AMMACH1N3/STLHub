@@ -90,8 +90,8 @@ class Admin extends Component {
         let func = (content._id ? 'edit' : 'create') + (type === 'Show' ? 'Show' : 'Content');
         if (content.date) {
             content.date = new Date(content.date);
-            if (JSON.stringify(content.date) === 'Invalid Date') {
-                console.log('Invalide date format');
+            if (content.date.toString() === 'Invalid Date') {
+                console.log('Invalid date format');
                 return;
             }
         }

@@ -1,5 +1,7 @@
-.mainShow {
-    text-align: center;
-    border-bottom: 30px solid #8800aa;
-    padding: 10%;
+#mainShow {
+    /* text-align: center; */
+    /* border-bottom: 30px solid #8800aa; */
+    /* padding: 10%; */
+    /* padding-bottom: 5vh; */
+    border-color: #8800aa;
 }
