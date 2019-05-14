@@ -8,11 +8,13 @@ function Announcements(props) {
     }
     
     return (
-        <div className='announcements' id='announcements'>
-            <h2>Announcements:</h2>
-            {props.announcements.map(announcement => {
-                return <Announcement key={announcement} announcement={announcement}/>
-            })}
+        <div className='announcements mainSection' id='announcements'>
+            <div className='container'>
+                <h2>Announcements:</h2>
+                {props.announcements.map(announcement => {
+                    return <Announcement key={announcement.title} announcement={announcement}/>
+                })}
+            </div>
         </div>
     );
 };

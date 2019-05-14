@@ -1,6 +1,9 @@
 .staff-card {
     overflow: auto;
-    margin: 5% 5% 5% 5%
+    margin: 5em auto;
+    vertical-align: top;
+    text-align: center;
+    /* padding: 0px 1em; */
 }
 .staff-name {
     text-align: center;
@@ -11,9 +14,11 @@
 }
 .about-left {
     float: left;
+    padding-right: 1em;
 }
 .about-right {
     float: right;
+    padding-left: 1em;
 }
 .Skye {
     border-bottom: 3px solid #0022ff;
@@ -26,4 +31,44 @@
 }
 .Caroline {
     border-bottom: 3px solid #00ffdd;
+}
+
+.staff-about {
+    display: inline-block;
+    max-width: 50%;
+    width: 100%;
+}
+
+.staff-section {
+    max-width: 1080px;
+    width: 100%;
+    margin: 0px auto;
+}
+
+.staff-image {
+    max-width: 50%;
+}
+
+@media screen and (min-width: 800px) {
+    .staff-card {
+        display: inline-block;
+        max-width: 25%;
+        width: 100%;
+        text-align: center;
+    }
+
+    .staff-image {
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .staff-about {
+        display: block;
+        max-width: 100%;
+    }
+
+    .about-left, .about-right {
+        float: none;
+        padding: 0px;
+    }
 }

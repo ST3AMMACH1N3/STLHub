@@ -1,6 +1,8 @@
-.mainMap {
-    text-align: center;
-    padding-top: 10%;
+#mainMap {
+    /* text-align: center; */
+    /* padding-top: 10%; */
+    /* padding-bottom: 5vh; */
+    border: none;
 }
 
 #map {

@@ -1,5 +1,7 @@
-.mainSurvivor {
-    text-align: center;
-    border-bottom: 30px solid #00ff00;
-    padding: 10%;
+#survivor {
+    /* text-align: center; */
+    /* border-bottom: 30px solid #00ff00; */
+    /* padding: 10%; */
+    /* padding-bottom: 5vh; */
+    border-color: #00ff00;
 }

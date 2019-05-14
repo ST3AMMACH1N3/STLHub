@@ -17,16 +17,18 @@ function MainCampsCarousel(props) {
     };
 
     return (
-        <div className='mainSummerCamps' id='mainCamps'>
-            <h1>Summer Camps</h1>
+        <div className='mainSummerCamps mainSection' id='mainCamps'>
             <div className='container'>
-                <Slider {...settings}>
-                    {props.camps.map((camp) =>{
-                        return <Camp key={camp} campInfo={camp} />
-                    })}
-                </Slider>
+                <h1>Summer Camps</h1>
+                <div className='container'>
+                    <Slider {...settings}>
+                        {props.camps.map((camp) =>{
+                            return <Camp key={camp} campInfo={camp} />
+                        })}
+                    </Slider>
+                </div>
+                <button>Sign Up!</button>
             </div>
-            <button>Sign Up!</button>
         </div>
     );
 };

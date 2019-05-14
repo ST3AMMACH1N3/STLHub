@@ -52,11 +52,13 @@ class Map extends Component {
 
     render() {
         return (
-            <div className='mainMap' id='mainMap'>
-                <h1>Skye's the Limit Studio</h1>
-                <h4>2721 N. Forsyth Road Suites 321 & 410 Winter Park, FL 32746</h4>
-                <a id='directions' href={`https://www.google.com/maps/dir//28.583097,-81.293571`} target='_blank' rel='noopener noreferrer'>Get Directions</a>
-                {/* <div id='map'></div> */}
+            <div className='mainMap mainSection' id='mainMap'>
+                <div className='container'>
+                    <h1>Skye's the Limit Studio</h1>
+                    <h4>2721 N. Forsyth Road Suites 321 & 410 Winter Park, FL 32746</h4>
+                    <a id='directions' href={`https://www.google.com/maps/dir//28.583097,-81.293571`} target='_blank' rel='noopener noreferrer'>Get Directions</a>
+                    {/* <div id='map'></div> */}
+                </div>
             </div>
         );
     };

@@ -79,7 +79,7 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <MainImageCarousel images={this.state.images}/>
+                {this.state.images.length ? <MainImageCarousel images={this.state.images}/> : ''}
                 {(this.state.announcements) ? <Announcements announcements={this.state.announcements}/> : ''}
                 <MainShows currentShow={this.state.currentShow}/>
                 <MainSurvivor survivor={this.state.survivor}/>
