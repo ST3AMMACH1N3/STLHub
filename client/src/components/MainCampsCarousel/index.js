@@ -5,6 +5,11 @@ import './style.css';
 
 function MainCampsCarousel(props) {
 
+    function getOrdinal(num) {
+        let ordinals = ['th', 'st', 'nd', 'rd'];
+        return (Math.floor(num / 10) === 1 || num % 10 > 3) ? ordinals[0] : ordinals[num % 10];
+    }
+
     var settings = {
     dots: true,
     infinite: true,
@@ -22,8 +27,14 @@ function MainCampsCarousel(props) {
                 <h1>Summer Camps</h1>
                 <div className='container'>
                     <Slider {...settings}>
-                        {props.camps.map((camp) =>{
-                            return <Camp key={camp} campInfo={camp} />
+                        {props.camps.map((camp) => {
+                            let { startDate, endDate, title, description, extendedDay, tuition } = camp;
+                            if (startDate && endDate) {
+                                let sameMonth = startDate.getMonth() === endDate.getMonth();
+                                startDate = Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' }).format(startDate) + getOrdinal(startDate.getDate());
+                                endDate = Intl.DateTimeFormat('en-US', sameMonth ? { day: 'numeric' } : { month: 'short', day: 'numeric' }).format(endDate) + getOrdinal(endDate.getDate());
+                            }
+                            return <Camp key={camp} campInfo={{ startDate, endDate, title, description, extendedDay, tuition }} />
                         })}
                     </Slider>
                 </div>

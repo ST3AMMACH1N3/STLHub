@@ -9,10 +9,10 @@ const db = require('../models');
 
 const adminController = require('../controllers/adminController');
 
-adminController.createShow({ body: { title: 'Xanadu', date: new Date('1/1/2019/ 19:00'), price: 500 } }, { json: show => console.log(show) });
-adminController.createContent({ body: { type: 'Camp', title: 'Trollapalooza', dates: 'Jun 11th-15th', description: 'Trollapalooza is an idea for a camp.', tuition: 9000 } }, { json: camp => console.log(camp) });
-adminController.createContent({ body: { type: 'Camp', title: 'Pitched Perfect', dates: 'July 2nd-13th', description: 'Pitched perfect is also an idea for a camp.', tuition: 18000 } }, { json: camp => console.log(camp) });
-adminController.createContent({ body: { type: 'Survivor', title: 'Asgard', dates: 'Jan 18th, 19th, 20th', tuition: 10000 } }, { json: survivor => console.log(survivor) });
+adminController.createShow({ body: { title: 'Xanadu', date: new Date('8/1/2019 19:00'), price: 500 } }, { json: show => console.log(show) });
+adminController.createContent({ body: { type: 'Camp', title: 'Trollapalooza', startDate: new Date('6/11/2019'), endDate: new Date('6/15/2019'), description: 'Trollapalooza is an idea for a camp.', tuition: 9000 } }, { json: camp => console.log(camp) });
+adminController.createContent({ body: { type: 'Camp', title: 'Pitched Perfect', startDate: new Date('7/2/2019'), endDate: new Date('7/13/2019'), description: 'Pitched perfect is also an idea for a camp.', tuition: 18000 } }, { json: camp => console.log(camp) });
+adminController.createContent({ body: { type: 'Survivor', title: 'Quantum Realm', startDate: new Date('5/31/2019'), endDate: new Date('6/2/2019'), tuition: 10000 } }, { json: survivor => console.log(survivor) });
 adminController.createContent({ body: { type: 'Announcement', title: 'New Website!', description: 'Hey, we made a new website!!' } }, { json: announcement => console.log(announcement) });
 db.User.create({ name: 'Ben Houston', email: 'admin@gmail.com', password: 'admin', admin: true}).then(data => console.log(data)).catch(err => console.log(err));
 db.User.create({ name: 'Aria Houston', email: 'test@gmail.com', password: 'test'}).then(data => console.log(data)).catch(err => console.log(err));

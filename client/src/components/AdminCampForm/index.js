@@ -7,23 +7,28 @@ class AdminCampForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: new Date,
-            endDate: new Date,
             start: true
         }
+        this.props.handleChange('Camp', props.index, { target: { name: 'startDate', value: new Date(props.camp.startDate) } });
+        this.props.handleChange('Camp', props.index, { target: { name: 'endDate', value: new Date(props.camp.endDate) } });
     }
 
     handleChange = date => {
-        let changeStart = this.state.start || date < this.state.startDate;
-        let changeEnd = !changeStart;
+        let changeStart = this.state.start || (date < this.props.survivor.startDate);
+        let changeEnd = !this.state.start || date > this.props.survivor.startDate;
+        if (changeStart) {
+            this.props.handleChange('Survivor', this.props.index, { target: { name: 'startDate', value: date } })
+        }
+        if (changeEnd) {
+            this.props.handleChange('Survivor', this.props.index, { target: { name: 'endDate', value: date } })
+        }
         this.setState({
-            startDate: changeStart ? date : this.state.startDate,
-            endDate: changeEnd ? date : this.state.endDate,
             start: !changeStart
         })
     }
 
     formatDate = date => {
+        date = new Date(date);
         let options = { weekday: 'short', month: 'short', day: 'numeric'};
         let readable = Intl.DateTimeFormat('en-US', options).format(date);
         return readable;
@@ -97,14 +102,13 @@ class AdminCampForm extends Component {
                     />
                     <br />
                     <DatePicker
-                        // selected={this.state.startDate}
                         className='admin-input'
-                        value={`${this.formatDate(this.state.startDate)} - ${this.formatDate(this.state.endDate)}`}
+                        value={`${this.formatDate(this.props.camp.startDate)} - ${this.formatDate(this.props.camp.endDate)}`}
                         shouldCloseOnSelect={false}
                         selectsStart
-                        startDate={this.state.startDate}
+                        startDate={this.props.camp.startDate}
                         selectsEnd
-                        endDate={this.state.endDate}
+                        endDate={this.props.camp.endDate}
                         onChange={this.handleChange}
                     />
                 </form>
