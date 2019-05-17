@@ -14,6 +14,7 @@ import FAQ from './pages/FAQ';
 import NoMatch from './pages/NoMatch';
 import API from './utils/API';
 import Header from './components/Header';
+import ChangePassword from './pages/ChangePassword';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -59,6 +60,7 @@ class App extends Component {
                         <Route exact path='/ticketing' render={(...args) => <Ticketing credentials={this.state.credentials} {...args}  />} />
                         <Route exact path='/admin' render={(...args) => <Admin credentials={this.state.credentials} {...args} />} />
                         <Route exact path='/login' render={(...args) => <Login credentials={this.state.credentials} handleLogin={this.getCredentials} {...args} />} />
+                        <Route exact path='/changepassword' render={(...args) => <ChangePassword credentials={this.state.credentials} {...args} />} />
                         <Route exact path='/register' render={(...args) => <Register credentials={this.state.credentials} {...args} />} />
                         <Route exact path='/about' render={(...args) => <About credentials={this.state.credentials} {...args} />} />
                         <Route exact path='/survivor' render={(...args) => <Survivor credentials={this.state.credentials} {...args} />} />

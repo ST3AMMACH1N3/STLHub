@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const siteObj = require('../../controllers/siteObj');
 const guestController = require('../../controllers/guestController');
+const userController = require('../../controllers/userController');
 const pageController = require('../../controllers/pageController');
 const seatController = require('../../controllers/seatController');
 const passport = require('../../config/passport');
@@ -59,6 +60,15 @@ router
     .post(isAuthenticated, (req, res) => {
         req.logout();
         res.end();
+    })
+
+router
+    .route('/changePassword')
+    .post(isAuthenticated, (req, res) => {
+        userController
+            .changePassword(req.user._id, req.body.newPassword)
+            .then(result => res.end())
+            .catch(err => res.send(err));
     })
 
 router

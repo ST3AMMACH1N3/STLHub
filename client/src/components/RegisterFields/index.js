@@ -26,7 +26,8 @@ class RegisterFields extends Component {
         API
             .createAccount(this.state)
             .then(response => {
-                window.location.href = '/login';
+                console.log(response);
+                // window.location.href = '/login';
             })
             .catch(err => console.log(err));
 
