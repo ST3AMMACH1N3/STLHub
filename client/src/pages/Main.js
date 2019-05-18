@@ -52,6 +52,7 @@ class Main extends Component {
                     return readable;
                 });
             }
+            console.log(currentShow)
 
             camps.map(camp => {
                 camp.startDate = new Date(camp.startDate);
@@ -59,16 +60,19 @@ class Main extends Component {
                 camp.tuition = (parseInt(camp.tuition) / 100).toFixed(2)
                 return camp
             })
+            console.log(camps);
 
+            console.log(survivors);
             let currentSurvivor;
             nearestDate = Infinity;
             survivors.forEach(survivor => {
-                let survivorDate = new Date(survivor.date);
+                let survivorDate = new Date(survivor.startDate);
                 if (survivorDate - today < nearestDate && survivorDate - today > 1) {
                     currentSurvivor = survivor;
                     nearestDate = survivorDate - today;
                 }
             })
+            console.log(currentSurvivor);
             
             this.setState({
                 images: images || [],
@@ -77,10 +81,10 @@ class Main extends Component {
                     dates: showDates
                 },
                 survivor: {
-                    theme: currentSurvivor ? currentSurvivor.theme : null,
+                    title: currentSurvivor ? currentSurvivor.title : null,
                     startDate: currentSurvivor ? new Date(currentSurvivor.startDate) : null,
-                    endDate: survivors.length ? new Date(currentSurvivor.endDate) : null,
-                    tuition: survivors.length ? '$' + (currentSurvivor.tuition / 100).toFixed(2) : null
+                    endDate: currentSurvivor ? new Date(currentSurvivor.endDate) : null,
+                    tuition: currentSurvivor ? '$' + (currentSurvivor.tuition / 100).toFixed(2) : null
                 },
                 camps: camps,
                 announcements: announcements

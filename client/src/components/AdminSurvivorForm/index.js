@@ -9,8 +9,6 @@ class AdminSurvivorForm extends Component {
         this.state = {
             start: true
         }
-        this.props.handleChange('Survivor', this.props.index, { target: { name: 'startDate', value: new Date(this.props.survivor.startDate) } });
-        this.props.handleChange('Survivor', this.props.index, { target: { name: 'endDate', value: new Date(this.props.survivor.endDate) } });
     }
 
     handleChange = date => {
@@ -28,7 +26,9 @@ class AdminSurvivorForm extends Component {
     }
 
     formatDate = date => {
-        date = new Date(date);
+        if (!date) {
+            return;
+        }
         let options = { weekday: 'short', month: 'short', day: 'numeric'};
         let readable = Intl.DateTimeFormat('en-US', options).format(date);
         return readable;

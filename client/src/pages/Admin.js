@@ -29,12 +29,27 @@ class Admin extends Component {
 
     componentDidMount = () => {
         API.getContent().then(content => {
+            let { images, shows, survivors, camps, announcements } = content.data;
+            shows = shows.map(show => {
+                show.date = new Date(show.date);
+                return show;
+            })
+            survivors = survivors.map(survivor => {
+                survivor.startDate = new Date(survivor.startDate);
+                survivor.endDate = new Date(survivor.endDate);
+                return survivor;
+            })
+            camps = camps.map(camp => {
+                camp.startDate = new Date(camp.startDate);
+                camp.endDate = new Date(camp.endDate);
+                camp.showDate = new Date(camp.showDate);
+            })
             this.setState({
-                images: content.data.images,
-                shows: content.data.shows,
-                survivors: content.data.survivors,
-                camps: content.data.camps,
-                announcements: content.data.announcements
+                images: images,
+                shows: shows,
+                survivors: survivors,
+                camps: camps,
+                announcements: announcements
             })
         });
     }

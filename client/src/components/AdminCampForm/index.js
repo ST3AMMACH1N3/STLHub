@@ -9,18 +9,16 @@ class AdminCampForm extends Component {
         this.state = {
             start: true
         }
-        this.props.handleChange('Camp', props.index, { target: { name: 'startDate', value: new Date(props.camp.startDate) } });
-        this.props.handleChange('Camp', props.index, { target: { name: 'endDate', value: new Date(props.camp.endDate) } });
     }
 
     handleChange = date => {
-        let changeStart = this.state.start || (date < this.props.survivor.startDate);
-        let changeEnd = !this.state.start || date > this.props.survivor.startDate;
+        let changeStart = this.state.start || (date < this.props.camp.startDate);
+        let changeEnd = !this.state.start || date > this.props.camp.startDate;
         if (changeStart) {
-            this.props.handleChange('Survivor', this.props.index, { target: { name: 'startDate', value: date } })
+            this.props.handleChange('Camp', this.props.index, { target: { name: 'startDate', value: date } })
         }
         if (changeEnd) {
-            this.props.handleChange('Survivor', this.props.index, { target: { name: 'endDate', value: date } })
+            this.props.handleChange('Camp', this.props.index, { target: { name: 'endDate', value: date } })
         }
         this.setState({
             start: !changeStart
@@ -28,7 +26,9 @@ class AdminCampForm extends Component {
     }
 
     formatDate = date => {
-        date = new Date(date);
+        if (!date) {
+            return;
+        }
         let options = { weekday: 'short', month: 'short', day: 'numeric'};
         let readable = Intl.DateTimeFormat('en-US', options).format(date);
         return readable;
@@ -46,12 +46,15 @@ class AdminCampForm extends Component {
                     placeholder='Camp Name'
                     />
                     <br />
-                    <input className='admin-input'
-                    value={this.props.camp.dates}
-                    name='dates'
-                    onChange={event => this.props.handleChange('Camp', this.props.index, event)}
-                    type='text'
-                    placeholder='Camp Dates'
+                    <DatePicker
+                        className='admin-input'
+                        value={`${this.formatDate(this.props.camp.startDate)} - ${this.formatDate(this.props.camp.endDate)}`}
+                        shouldCloseOnSelect={false}
+                        selectsStart
+                        startDate={this.props.camp.startDate}
+                        selectsEnd
+                        endDate={this.props.camp.endDate}
+                        onChange={this.handleChange}
                     />
                     <br />
                     <textarea className='admin-input'
@@ -70,12 +73,17 @@ class AdminCampForm extends Component {
                     placeholder='Camp Tuition Price'
                     />
                     <br />
-                    <input className='admin-input'
-                    value={this.props.camp.showDate}
-                    name='showDate'
-                    onChange={event => this.props.handleChange('Camp', this.props.index, event)}
-                    type='text'
-                    placeholder='Camp Show Date'
+                    <DatePicker
+                        className='admin-input'
+                        selected={this.props.camp.showDate ? new Date(this.props.camp.showDate) : null}
+                        showTimeSelect
+                        timeFormat="h:mmaa"
+                        timeIntervals={15}
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                        timeCaption="time"
+                        name='date'
+                        placeholderText='Select a Show Date'
+                        onChange={date => this.props.handleChange('Camp', this.props.index, { target: { name: 'showDate', value: date } })}
                     />
                     <br />
                     <input className='admin-input'
@@ -101,16 +109,7 @@ class AdminCampForm extends Component {
                     placeholder='Camp Extended Day Price'
                     />
                     <br />
-                    <DatePicker
-                        className='admin-input'
-                        value={`${this.formatDate(this.props.camp.startDate)} - ${this.formatDate(this.props.camp.endDate)}`}
-                        shouldCloseOnSelect={false}
-                        selectsStart
-                        startDate={this.props.camp.startDate}
-                        selectsEnd
-                        endDate={this.props.camp.endDate}
-                        onChange={this.handleChange}
-                    />
+                    
                 </form>
             </div>
         );
