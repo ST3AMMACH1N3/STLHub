@@ -21,7 +21,7 @@ function MainSurvivor(props) {
             <div className='container'>
                 <h1>Survivor</h1>
                 <h2>{theme}</h2>
-                <h2>{`${startDate} - ${endDate}`}</h2>
+                <h2>{(startDate && endDate) ? `${startDate} - ${endDate}` : 'TBA'}</h2>
                 <h2>{tuition}</h2>
                 <h2>Outwit, Outplay, Outlast.</h2>
                 <Link to={{ pathname: '/survivor' }}><button>Reserve Your Spot!</button></Link>

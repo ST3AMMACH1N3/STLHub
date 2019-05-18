@@ -24,16 +24,14 @@ class ChangePassword extends Component {
             .then(() => {
                 this.setState({newPassword: ''});
             })
-            .catch(err => {
-                console.log(err);
-            })
+            .catch(err => console.log(err));
     }
 
     showPage = () => {
         return (
             <div>
                 <form>
-                    <input type='password' name='newPassword' placeholder='Enter new password' onChange={this.handleChange}/>
+                    <input type='password' name='newPassword' placeholder='Enter new password' onChange={this.handleChange} value={this.state.newPassword}/>
                     <button onClick={this.handleSubmit}>Change Password</button>
                 </form>
             </div>
