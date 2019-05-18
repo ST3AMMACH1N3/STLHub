@@ -17,10 +17,15 @@ const db = require('../models');
 db.User
   .create({ name: 'Ben Houston', email: 'benjaminahouston@gmail.com', password: 'admin', admin: true})
   .then(data => {
+    console.log('Admin Ben added!')
+    return db.User.create({ name: 'Will Houston', email: 'wandrewhouston@gmail.com', password: 'admin', admin: true});
+  })
+  .then(data => {
+    console.log('Admin Will added!');
     process.exit();
   })
   .catch(err => console.log(err));
-// db.User.create({ name: 'Will Houston', email: 'wandrewhouston@gmail.com', password: 'admin', admin: true}).then(data => console.log(data)).catch(err => console.log(err));
+
 
 //Images
 //https://static.wixstatic.com/media/3c9dac_57b02779cd1a46a2823267f2c9008956~mv2_d_2048_1366_s_2.jpg/v1/fill/w_980,h_620,al_c,q_85,usm_0.66_1.00_0.01/3c9dac_57b02779cd1a46a2823267f2c9008956~mv2_d_2048_1366_s_2.webp
