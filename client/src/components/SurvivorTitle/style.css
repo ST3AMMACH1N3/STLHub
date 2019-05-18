@@ -1,15 +1,10 @@
 .survivor-title {
     border-bottom: 10px solid #00ff00;
-    width: 35%;
-    margin-top: 2%;
-    margin-left: 5%;
     display: inline-block;
 }
 .survivor-links {
     float: right;
     overflow: auto;
-    margin-right: 5%;
-    margin-top: 5%;
 }
 .survivor-faq, .survivor-trivia {
     color: orangered;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import Camp from '../Camp';
+import {Link} from 'react-router-dom';
 import './style.css';
 
 function MainCampsCarousel(props) {
@@ -27,7 +28,7 @@ function MainCampsCarousel(props) {
                         })}
                     </Slider>
                 </div>
-                <button>Sign Up!</button>
+                <Link to={{ pathname: '/camps' }}><button>Sign Up!</button></Link>
             </div>
         </div>
     );

@@ -40,7 +40,7 @@ class Survivor extends Component {
 
     render() {
         return (
-            <div>
+            <div className='container'>
                 <SurvivorTitle survivor={this.state.survivor}/>
                 <SurvivorCarousel images={this.state.images}/>
                 <SurvivorInfo />
