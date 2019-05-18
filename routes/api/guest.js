@@ -66,8 +66,14 @@ router
     .route('/changePassword')
     .post(isAuthenticated, (req, res) => {
         userController
-            .changePassword(req.user._id, req.body.newPassword)
-            .then(result => res.end())
+            .changePassword(req.user._id)
+            .then(user => {
+                user.password = req.body.newPassword;
+                return user.save();
+            })
+            .then(() => {
+                res.end();
+            })
             .catch(err => res.send(err));
     })
 
