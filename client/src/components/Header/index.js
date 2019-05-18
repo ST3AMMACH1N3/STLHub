@@ -44,6 +44,10 @@ class Header extends Component {
                         <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
                             {this.props.credentials ? <a className='nav-link' href='/#header' onClick={this.props.handleLogout}>Log Out</a> : <Link className='nav-link' to='/login'>Log In</Link> }
                         </li>
+                        {(this.props.credentials) ?
+                        <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
+                            <Link className='nav-link' to='/changepassword'>Change Password</Link>
+                        </li> : ''}
                         {(this.props.credentials && this.props.credentials.admin) ?
                         <li className='nav-item' data-toggle="collapse" data-target=".navbar-collapse">
                             <Link className='nav-link' to='/admin'>Admin</Link>

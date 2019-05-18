@@ -2,11 +2,11 @@ import React from 'react';
 import './style.css';
 
 function Camps(props) {
-    let {title, dates, description, tuition, extendedDay} = props.campInfo;
+    let {title, startDate, endDate, description, tuition, extendedDay} = props.campInfo;
     return (
         <div>
             <h2>{title}</h2>
-            <span>{dates}</span>
+            <span>{`${startDate} - ${endDate}`}</span>
             <br />
             <span>{description}</span>
             <br />

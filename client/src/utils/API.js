@@ -1,6 +1,10 @@
 import axios from "axios";
 
 export default { 
+    changePassword: function(data) {
+        return axios.post('/api/changePassword', data);
+    },
+
     createAccount: function(data) {
         return axios.post('/api/createAccount', data);
     },
