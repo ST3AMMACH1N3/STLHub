@@ -56,9 +56,12 @@ class Main extends Component {
             }
 
             let camps = content.data.camps.map(camp => {
+                camp.startDate = new Date(camp.startDate);
+                camp.endDate = new Date(camp.endDate);
                 camp.tuition = (parseInt(camp.tuition) / 100).toFixed(2)
                 return camp
             })
+            
             this.setState({
                 images: content.data.images || [],
                 currentShow: {
@@ -67,7 +70,8 @@ class Main extends Component {
                 },
                 survivor: {
                     theme: content.data.survivors[0].title,
-                    dates: content.data.survivors[0].dates,
+                    startDate: new Date(content.data.survivors[0].startDate),
+                    endDate: new Date(content.data.survivors[0].endDate),
                     tuition: '$' + (content.data.survivors[0].tuition / 100).toFixed(2)
                 },
                 camps: camps,
