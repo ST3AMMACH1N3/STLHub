@@ -29,13 +29,12 @@ class Main extends Component {
 
     componentDidMount = () => {
         API.getContent().then(content => {
-            if (content.data.shows.length < 1) {
-                return;
-            }
+            let { images, announcements, shows, camps, survivors } = content.data;
+            
             let currentShow;
             let nearestDate = Infinity;
             let today = Date.now();
-            content.data.shows.forEach(show => {
+            shows.forEach(show => {
                 let showDate = new Date(show.date);
                 if (showDate - today < nearestDate && showDate - today > 1) {
                     currentShow = show;
@@ -43,11 +42,10 @@ class Main extends Component {
                 }
             })
             
-            let shows = [{}];
             let showDates = [];
             if (currentShow) {
-                shows = content.data.shows.filter(show => show.title === currentShow.title);
-                showDates = shows.map(show => {
+                let showingList = shows.filter(show => show.title === currentShow.title);
+                showDates = showingList.map(show => {
                     let date = new Date(show.date);
                     let options = { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' };
                     let readable = Intl.DateTimeFormat('en-US', options).format(date);
@@ -55,27 +53,37 @@ class Main extends Component {
                 });
             }
 
-            let camps = content.data.camps.map(camp => {
+            camps.map(camp => {
                 camp.startDate = new Date(camp.startDate);
                 camp.endDate = new Date(camp.endDate);
                 camp.tuition = (parseInt(camp.tuition) / 100).toFixed(2)
                 return camp
             })
+
+            let currentSurvivor;
+            nearestDate = Infinity;
+            survivors.forEach(survivor => {
+                let survivorDate = new Date(survivor.date);
+                if (survivorDate - today < nearestDate && survivorDate - today > 1) {
+                    currentSurvivor = survivor;
+                    nearestDate = survivorDate - today;
+                }
+            })
             
             this.setState({
-                images: content.data.images || [],
+                images: images || [],
                 currentShow: {
-                    title: shows[0].title || 'No Announced Shows',
+                    title: currentShow ? currentShow.title : 'No Announced Shows',
                     dates: showDates
                 },
                 survivor: {
-                    theme: content.data.survivors[0].title,
-                    startDate: new Date(content.data.survivors[0].startDate),
-                    endDate: new Date(content.data.survivors[0].endDate),
-                    tuition: '$' + (content.data.survivors[0].tuition / 100).toFixed(2)
+                    theme: currentSurvivor ? currentSurvivor.theme : null,
+                    startDate: currentSurvivor ? new Date(currentSurvivor.startDate) : null,
+                    endDate: survivors.length ? new Date(currentSurvivor.endDate) : null,
+                    tuition: survivors.length ? '$' + (currentSurvivor.tuition / 100).toFixed(2) : null
                 },
                 camps: camps,
-                announcements: content.data.announcements
+                announcements: announcements
             })
         });
     }
@@ -84,7 +92,7 @@ class Main extends Component {
         return (
             <div>
                 {this.state.images.length ? <MainImageCarousel images={this.state.images}/> : ''}
-                {(this.state.announcements) ? <Announcements announcements={this.state.announcements}/> : ''}
+                {this.state.announcements.length ? <Announcements announcements={this.state.announcements}/> : ''}
                 <MainShows currentShow={this.state.currentShow}/>
                 <MainSurvivor survivor={this.state.survivor}/>
                 <MainCampsCarousel camps={this.state.camps}/>
