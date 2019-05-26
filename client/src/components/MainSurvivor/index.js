@@ -25,7 +25,7 @@ function MainSurvivor(props) {
                 <h2>{(startDate && endDate) ? `${startDate} - ${endDate}` : 'TBA'}</h2>
                 <h2>{tuition}</h2>
                 <h2>Outwit, Outplay, Outlast.</h2>
-                <Link to={{ pathname: '/survivor' }}><button>Reserve Your Spot!</button></Link>
+                <Link to={{ pathname: '/survivor' }}><button className='survivorReserveBtn'>Reserve Your Spot!</button></Link>
             </div>
         </div>
     );

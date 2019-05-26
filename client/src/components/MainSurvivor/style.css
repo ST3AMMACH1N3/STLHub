@@ -5,3 +5,14 @@
     /* padding-bottom: 5vh; */
     border-color: #00ff00;
 }
+
+.survivorReserveBtn {
+    margin-top: 1rem;
+    background:#00aa00;
+    color: #fff;
+    border-radius: 0.25rem;
+    border: 1px solid #00aa00;
+    width: 100%;
+    max-width: 200px;
+    height: 3rem;
+}

@@ -38,7 +38,7 @@ function MainCampsCarousel(props) {
                         })}
                     </Slider>
                 </div>
-                <button>Sign Up!</button>
+                <button className='campSignUpBtn'>Sign Up!</button>
             </div>
         </div>
     );

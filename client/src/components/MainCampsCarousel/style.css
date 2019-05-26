@@ -5,3 +5,14 @@
   /* padding-bottom: 5vh; */
   border-color: #0022ff;
 }
+
+.campSignUpBtn {
+  margin-top: 1rem;
+    background: #0000dd;
+    color: #fff;
+    border-radius: 0.25rem;
+    border: 1px solid #0000dd;
+    width: 100%;
+    max-width: 200px;
+    height: 3rem;
+}
