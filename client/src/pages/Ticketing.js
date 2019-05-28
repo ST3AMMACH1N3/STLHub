@@ -16,7 +16,9 @@ class Ticketing extends Component {
     }
 
     render() {
-        return <TicketingMenu title={this.state.title} credentials={this.props.credentials}/>;
+        return (
+                <TicketingMenu title={this.state.title} credentials={this.props.credentials}/>
+        );
     };
 };
 

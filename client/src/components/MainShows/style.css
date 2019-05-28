@@ -5,3 +5,14 @@
     /* padding-bottom: 5vh; */
     border-color: #8800aa;
 }
+
+.showReserveBtn {
+    margin-top: 1rem;
+    background: #550088;
+    color: #fff;
+    border-radius: 0.25rem;
+    border: 1px solid #550088;
+    width: 100%;
+    max-width: 200px;
+    height: 3rem;
+}

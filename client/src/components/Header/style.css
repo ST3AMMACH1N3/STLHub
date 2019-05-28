@@ -2,6 +2,18 @@ html {
     scroll-behavior: smooth;
 }
 
+svg {
+    height: 1.5rem;
+    padding-right: 0.5rem;
+    fill:#ffffff;
+    stroke: #ffffff;
+}
+
+svg:hover {
+    fill: #ff0000;
+    stroke: #ff0000;
+}
+
 .container {
     max-width: 1024px;
     width: 100%;
@@ -15,14 +27,24 @@ html {
     font-size: 1.5rem;
 }
 .navbar-toggler.toggler-example {
+    color: #ffffff;
     cursor: pointer;
 }
 .header {
-    background: #00ffdd;
-    color: #000000;
+    background: #000000;
+    /* background: linear-gradient(#000000, #333333); */
+    color: #ffffff;
+    border-bottom: 1px solid #555555;
 }
 .navbar-brand {
     font-weight: 900;
+    color: #ffffff;
+    /* line-height: 100%; */
+}
+
+.nav-link {
+    color: #ffffff;
+    border-top: 1px solid #555555;
 }
 
 .mainSection {
@@ -30,4 +52,32 @@ html {
     border-bottom-style: solid;
     padding-bottom: 10vh;
     text-align: center;
+    overflow: auto;
+}
+
+.desktop-logo {
+    display: inline;
+    vertical-align: top;
+}
+
+.mobile-logo {
+    display: none;
+    vertical-align: top;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0px auto;
+    padding-left: 0.75rem;
+    padding-right: 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-logo {
+        display: inline;
+    }
+
+    .desktop-logo {
+        display:none
+    }
 }
