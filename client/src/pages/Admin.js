@@ -43,6 +43,7 @@ class Admin extends Component {
                 camp.startDate = new Date(camp.startDate);
                 camp.endDate = new Date(camp.endDate);
                 camp.showDate = new Date(camp.showDate);
+                return camp;
             })
             this.setState({
                 images: images,
