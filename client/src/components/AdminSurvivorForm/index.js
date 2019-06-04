@@ -29,6 +29,7 @@ class AdminSurvivorForm extends Component {
         if (!date) {
             return;
         }
+        date = new Date(date);
         let options = { weekday: 'short', month: 'short', day: 'numeric'};
         let readable = Intl.DateTimeFormat('en-US', options).format(date);
         return readable;
