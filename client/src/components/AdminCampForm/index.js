@@ -27,8 +27,9 @@ class AdminCampForm extends Component {
 
     formatDate = date => {
         if (!date) {
-            return;
+            return 'Select';
         }
+        date = new Date(date);
         let options = { weekday: 'short', month: 'short', day: 'numeric'};
         let readable = Intl.DateTimeFormat('en-US', options).format(date);
         return readable;
@@ -75,7 +76,7 @@ class AdminCampForm extends Component {
                     <br />
                     <DatePicker
                         className='admin-input'
-                        selected={this.props.camp.showDate ? new Date(this.props.camp.showDate) : null}
+                        selected={this.props.camp.showDate}
                         showTimeSelect
                         timeFormat="h:mmaa"
                         timeIntervals={15}
