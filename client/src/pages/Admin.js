@@ -25,16 +25,38 @@ class Admin extends Component {
             camps: [],
             announcements: []
         }
+
+        let saving = false;
     }
 
     componentDidMount = () => {
+        this.getContent();
+    }
+
+    getContent = () => {
         API.getContent().then(content => {
+            let { images, shows, survivors, camps, announcements } = content.data;
+            shows = shows.map(show => {
+                show.date = new Date(show.date);
+                return show;
+            })
+            survivors = survivors.map(survivor => {
+                survivor.startDate = new Date(survivor.startDate);
+                survivor.endDate = new Date(survivor.endDate);
+                return survivor;
+            })
+            camps = camps.map(camp => {
+                camp.startDate = new Date(camp.startDate);
+                camp.endDate = new Date(camp.endDate);
+                camp.showDate = camp.showDate ? new Date(camp.showDate) : null;
+                return camp;
+            })
             this.setState({
-                images: content.data.images,
-                shows: content.data.shows,
-                survivors: content.data.survivors,
-                camps: content.data.camps,
-                announcements: content.data.announcements
+                images: images,
+                shows: shows,
+                survivors: survivors,
+                camps: camps,
+                announcements: announcements
             })
         });
     }
@@ -85,6 +107,8 @@ class Admin extends Component {
     }
 
     handleSave = (type, index) => {
+        if (this.saving) return;
+        this.saving = true;
         let category = type.toLowerCase() + 's';
         let content = this.state[category].slice(index, index + 1)[0];
         let func = (content._id ? 'edit' : 'create') + (type === 'Show' ? 'Show' : 'Content');
@@ -95,8 +119,22 @@ class Admin extends Component {
                 return;
             }
         }
+        let newArray = this.state[category].slice();
         API[func]({ type, content })
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res);
+                newArray[index] = res.data;
+                for(let key in newArray[index]) {
+                    if (key.indexOf(/date/i) !== -1) {
+                        newArray[index][key] = newArray[index][key] ? new Date(newArray[index][key]) : null;
+                    }
+                }
+                this.setState({
+                    [category]: newArray
+                }, function() {
+                    this.saving = false;
+                });
+            })
             .catch(err => console.log(err));
     }
 

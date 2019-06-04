@@ -2,14 +2,9 @@ body {
   background: #000000;
   color: #ffffff;
 }
-/* .container {
-  margin: 0 auto;
-  padding: 0px;
-  width: 100%;
-  background: #00000000;
-} */
 .slick-slider {
   margin: 30px auto 50px;
+  /* margin: 0px auto 50px auto; */
 }
 .slick-dots li button:before {
   color: #fff;
@@ -33,4 +28,17 @@ body {
 .carouselImg{
     height: auto;
     width: 100%;
+}
+
+.carousel {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0px auto;
+  overflow: auto;
+}
+
+@media screen and (max-width: 960px) {
+  .slick-slider {
+    margin: 0px auto 50px auto;
+  }
 }

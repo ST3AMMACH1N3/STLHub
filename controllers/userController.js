@@ -1,4 +1,5 @@
 const db = require('../models');
+const bcrypt = require('bcrypt');
 const reservationController = require('./reservationController');
 
 module.exports = {
@@ -6,8 +7,8 @@ module.exports = {
         return db.User.findByIdAndUpdate(userId, { $addToSet: { reservations: resId } });
     },
 
-    changePassword: function(userId, newPassword) {
-        return db.User.findByIdAndUpdate(userId, { password: newPassword });
+    changePassword: function(userId) {
+        return db.User.findById(userId)
     },
 
     create: function(name, password, email) {

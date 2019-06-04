@@ -19,7 +19,8 @@ class Survivor extends Component {
             }],
             survivor: {
                 theme: '',
-                dates: '',
+                startDate: '',
+                endDate: '',
                 tuition: ''
             }
         };
@@ -31,7 +32,8 @@ class Survivor extends Component {
             this.setState({
                 survivor: {
                     theme: content.data.survivors[0].title,
-                    dates: content.data.survivors[0].dates,
+                    startDate: content.data.survivors[0].startDate,
+                    endDate: content.data.survivors[0].endDate,
                     tuition: '$' + (content.data.survivors[0].tuition / 100).toFixed(2)
                 }
             });

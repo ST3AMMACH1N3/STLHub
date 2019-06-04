@@ -32,7 +32,7 @@ class Camps extends Component {
             <div className='container'>
                 <CampsTitle />
                 <CampsIntro />
-                {(this.state.camps.length) ? <Camp campInfo={this.state.camps}/> : ''}
+                {(this.state.camps.length) ? this.state.camps.map(camp => <Camp campInfo={camp}/>) : ''}
             </div>
         );
     };

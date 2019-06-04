@@ -15,7 +15,7 @@ function MainImageCarousel(props) {
     cssEase: 'linear'
   };
   return (
-    <div className='container'>
+    <div className='carousel'>
       <Slider {...settings}>
         {props.images.map((image) => {
           return <img className='carouselImg' key={image.url} src={image.url} alt={image.alt}/>

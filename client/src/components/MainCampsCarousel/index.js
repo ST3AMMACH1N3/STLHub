@@ -39,7 +39,7 @@ function MainCampsCarousel(props) {
                         })}
                     </Slider>
                 </div>
-                <Link to={{ pathname: '/camps' }}><button>Sign Up!</button></Link>
+                <Link to={{ pathname: '/camps' }}><button className='campSignUpBtn'>Sign Up!</button></Link>
             </div>
         </div>
     );

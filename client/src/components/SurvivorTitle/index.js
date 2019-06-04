@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './style.css';
 
 function SurvivorTitle(props) {
-    let {theme, dates, tuition} = props.survivor;
+    let {theme, startDate, endDate, tuition} = props.survivor;
     return (
         <div>
             <h1 className='survivor-title'>Survivor</h1>
@@ -12,9 +12,11 @@ function SurvivorTitle(props) {
                 <br />
                 <Link className='survivor-faq' to='/faq'>Survivor FAQ</Link>
             </div>
-            <h2 className='survivor-theme'>{theme}</h2>
-            <h2 className='survivor-dates'>{dates}</h2>
-            <h2 className='survivor-tuition'>Tuition: {tuition}</h2>
+            {theme ? (<div>
+                <h2 className='survivor-theme'>{theme}</h2>
+                <h2 className='survivor-dates'>{startDate} - {endDate}</h2>
+                <h2 className='survivor-tuition'>Tuition: {tuition}</h2>
+            </div>) : ''}
         </div>
     );
 };

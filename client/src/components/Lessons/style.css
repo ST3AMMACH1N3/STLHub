@@ -25,3 +25,14 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0; 
 }
+
+.lessons-send {
+    margin-top: 1rem;
+    background: #00ccaa;
+    color: #fff;
+    border-radius: 0.25rem;
+    border: 1px solid #00ccaa;
+    width: 100%;
+    max-width: 200px;
+    height: 3rem;
+}
