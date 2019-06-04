@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-function Camps(props) {
+function Camp(props) {
     let {title, startDate, endDate, description, tuition, extendedDay} = props.campInfo;
     return (
         <div>
@@ -17,6 +17,6 @@ function Camps(props) {
     );
 };
 
-export default Camps;
+export default Camp;
 
 // {(performance.length) ? <span>{performance}</span> : ''}
