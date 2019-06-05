@@ -112,17 +112,15 @@ class Admin extends Component {
         let category = type.toLowerCase() + 's';
         let content = this.state[category].slice(index, index + 1)[0];
         let func = (content._id ? 'edit' : 'create') + (type === 'Show' ? 'Show' : 'Content');
-        if (content.date) {
-            content.date = new Date(content.date);
-            if (content.date.toString() === 'Invalid Date') {
-                console.log('Invalid date format');
-                return;
+        for(let key in content) {
+            if (key.indexOf(/date/i) !== -1) {
+                content[key] = content[key] ? new Date(content[key]) : null;
             }
         }
-        let newArray = this.state[category].slice();
         API[func]({ type, content })
             .then(res => {
                 console.log(res);
+                let newArray = this.state[category].slice();
                 newArray[index] = res.data;
                 for(let key in newArray[index]) {
                     if (key.indexOf(/date/i) !== -1) {

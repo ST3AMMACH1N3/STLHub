@@ -27,7 +27,7 @@ class AdminSurvivorForm extends Component {
 
     formatDate = date => {
         if (!date) {
-            return;
+            return '';
         }
         date = new Date(date);
         let options = { weekday: 'short', month: 'short', day: 'numeric'};
@@ -49,13 +49,14 @@ class AdminSurvivorForm extends Component {
                     <br />
                     <DatePicker
                         className='admin-input'
-                        value={`${this.formatDate(this.props.survivor.startDate)} - ${this.formatDate(this.props.survivor.endDate)}`}
+                        value={this.props.survivor.startDate ? `${this.formatDate(this.props.survivor.startDate)} - ${this.formatDate(this.props.survivor.endDate)}` : ''}
                         shouldCloseOnSelect={false}
                         selectsStart
                         startDate={this.props.survivor.startDate}
                         selectsEnd
                         endDate={this.props.survivor.endDate}
                         onChange={this.handleChange}
+                        placeholderText='Start Date - End Date'
                     />
                     <br />
                     <textarea className='admin-input'
