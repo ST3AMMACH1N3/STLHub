@@ -26,15 +26,29 @@ class Survivor extends Component {
         };
     };
 
+    getOrdinal = (num) => {
+        let ordinals = ['th', 'st', 'nd', 'rd'];
+        return (Math.floor(num / 10) === 1 || num % 10 > 3) ? ordinals[0] : ordinals[num % 10];
+    }
+
     componentDidMount = () => {
         API.getContent().then(content => {
             console.log(content);
+            let {title, startDate, endDate, tuition} = content.data.survivors[0];
+            if (startDate && endDate) {
+                startDate = new Date(startDate)
+                endDate = new Date(endDate)
+                console.log('Survivor loaded');
+                let sameMonth = startDate.getMonth() === endDate.getMonth();
+                startDate = Intl.DateTimeFormat('en-us', { month: 'short', day: 'numeric' }).format(startDate) + this.getOrdinal(startDate.getDate());
+                endDate = Intl.DateTimeFormat('en-us', sameMonth ? { day: 'numeric' } : { month: 'short', day: 'numeric' }).format(endDate) + this.getOrdinal(endDate.getDate());
+            }
             this.setState({
                 survivor: {
-                    theme: content.data.survivors[0].title,
-                    startDate: content.data.survivors[0].startDate,
-                    endDate: content.data.survivors[0].endDate,
-                    tuition: '$' + (content.data.survivors[0].tuition / 100).toFixed(2)
+                    theme: title,
+                    startDate: startDate,
+                    endDate: endDate,
+                    tuition: '$' + (tuition / 100).toFixed(2)
                 }
             });
         });
