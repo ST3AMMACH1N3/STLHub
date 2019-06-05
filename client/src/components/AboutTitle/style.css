@@ -1,6 +1,4 @@
 .about-title {
     border-bottom: 10px solid #8800aa;
-    width: 26%;
-    /* margin-top: 2%; */
-    /* margin-left: 5%; */
+    display: inline-block;
 }

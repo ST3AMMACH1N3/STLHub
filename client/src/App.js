@@ -9,6 +9,7 @@ import About from './pages/About';
 import Survivor from './pages/Survivor';
 import Trivia from './pages/Trivia';
 import FAQ from './pages/FAQ';
+import Camps from './pages/Camps';
 // import Checkout from './pages/Checkout';
 // import Thankyou from './pages/Thankyou';
 import NoMatch from './pages/NoMatch';
@@ -66,6 +67,7 @@ class App extends Component {
                         <Route exact path='/survivor' render={(...args) => <Survivor credentials={this.state.credentials} {...args} />} />
                         <Route exact path='/trivia' render={(...args) => <Trivia credentials={this.state.credentials} {...args} />} />
                         <Route exact path='/faq' render={(...args) => <FAQ credentials={this.state.credentials} {...args} />} />
+                        <Route exact path='/camps' render={(...args) => <Camps credentials={this.state.credentials} {...args} />} />
                         {/* <Route exact path='/checkout' component={Checkout} /> */}
                         {/* <Route exact path='/thankyou' component={Thankyou} /> */}
                         <Route component={NoMatch}/>
