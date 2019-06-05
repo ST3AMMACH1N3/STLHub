@@ -27,7 +27,7 @@ class AdminCampForm extends Component {
 
     formatDate = date => {
         if (!date) {
-            return 'Select';
+            return '';
         }
         date = new Date(date);
         let options = { weekday: 'short', month: 'short', day: 'numeric'};
@@ -49,13 +49,14 @@ class AdminCampForm extends Component {
                     <br />
                     <DatePicker
                         className='admin-input'
-                        value={`${this.formatDate(this.props.camp.startDate)} - ${this.formatDate(this.props.camp.endDate)}`}
+                        value={this.props.camp.startDate ? `${this.formatDate(this.props.camp.startDate)} - ${this.formatDate(this.props.camp.endDate)}` : null}
                         shouldCloseOnSelect={false}
                         selectsStart
                         startDate={this.props.camp.startDate}
                         selectsEnd
                         endDate={this.props.camp.endDate}
                         onChange={this.handleChange}
+                        placeholderText='Start Date - End Date'
                     />
                     <br />
                     <textarea className='admin-input'
@@ -76,7 +77,7 @@ class AdminCampForm extends Component {
                     <br />
                     <DatePicker
                         className='admin-input'
-                        selected={this.props.camp.showDate}
+                        selected={this.props.camp.showDate ? new Date(this.props.camp.showDate) : null}
                         showTimeSelect
                         timeFormat="h:mmaa"
                         timeIntervals={15}
